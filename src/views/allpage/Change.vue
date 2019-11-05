@@ -7,9 +7,5 @@
 <script>
 
 export default {
-  name: 'find',
-  components: {
-    Find
-  }
 }
 </script>

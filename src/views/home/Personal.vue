@@ -1,10 +1,13 @@
 <template>
-  <div>首页</div>
+  <div>P</div>
 </template>
 
 <script>
-export default {};
+export default {
+
+}
 </script>
 
 <style>
+
 </style>
