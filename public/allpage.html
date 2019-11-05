@@ -10,6 +10,27 @@
 </head>
 
 <body>
+  <script>
+    ;
+    (function (designWidth) {
+      function computeFont() {
+        // 1. 获取视口的宽度
+        let winW = document.documentElement.clientWidth;
+        if (winW >= 750) {
+          //
+          document.documentElement.style.fontSize = '100px';
+          return;
+        }
+        document.documentElement.style.fontSize = winW / designWidth * 100 + 'px';
+      }
+      computeFont();
+      //窗口尺寸改变触发
+      window.addEventListener('resize', computeFont);
+      //移动端朝向改变触发
+      window.addEventListener('orientataionchange', computeFont);
+
+    })(750);
+  </script>
   <div id="app"></div>
 </body>
 
