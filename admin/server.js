@@ -47,7 +47,11 @@ const {
 app.use(async (req, res, next) => {
     req.$USERDATA = JSON.parse(await readFile('./mock/user.json'));
     req.$GAMELIST = JSON.parse(await readFile('./mock/gamelist.json'));
-    // req.$GAMEINFO = JSON.parse(await readFile('./mock/gameInfo.json'));
+    req.$GAMEINFO = JSON.parse(await readFile('./mock/gameinfo.json'));
+    req.$COMMENT = JSON.parse(await readFile('./mock/comment.json'));
+    req.$DISCOVERY = JSON.parse(await readFile('./mock/discovery.json'));
+    req.$ORDER = JSON.parse(await readFile('./mock/order.json'));
+    req.$PLAYER = JSON.parse(await readFile('./mock/player.json'));
     next();
 })
 
