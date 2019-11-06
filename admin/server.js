@@ -45,13 +45,15 @@ const {
 } = require('./utils/promiseFS');
 
 app.use(async (req, res, next) => {
-    req.$USERDATA = JSON.parse(await readFile('./mock/user.json'))
+    req.$USERDATA = JSON.parse(await readFile('./mock/user.json'));
+    req.$GAMELIST = JSON.parse(await readFile('./mock/gamelist.json'));
+    // req.$GAMEINFO = JSON.parse(await readFile('./mock/gameInfo.json'));
     next();
 })
 
 // 构建express路由
 app.use('/user', require('./routes/user'));
-
+app.use('/game', require('./routes/game'));
 app.use((req, res) => {
     res.status(404);
     res.send('NOT FOUND!');

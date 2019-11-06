@@ -61,7 +61,25 @@ RESULT：{
 	codeText:'OK'
 }
 
+---------
+获取游戏信息列表
+URL：/game/list
+METHOD：GET,
+PARAMS：
+RESULT：{
+        "id":,游戏id
+        "name":"",游戏名
+        "score":7.2,评分
+        "scorenumber":1654,评分人数
+        "introduce":"",游戏介绍
+        "pic":"",大图片地址
+        "icon":""小的图片
+    }
 
+
+
+
+	
 获取用户通讯录
 URL：/user/list
 METHOD：GET
