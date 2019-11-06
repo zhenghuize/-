@@ -56,6 +56,21 @@ route.get('/comment',(req,res)=>{
     })
 })
 
+// 安利墙
+route.get('/wall',(req,res)=>{
+    let data = req.$WALL;
+    if(data){
+        success(res,{
+            data
+        })
+        return;
+    }
+    success(res,{
+        code:1,
+        codeText:'没有数据'
+    })
+})
+
 // 每日新发现
 route.get('/discovery',(req,res)=>{
     let $DISCOVERY = req.$DISCOVERY;
