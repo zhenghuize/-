@@ -18,7 +18,7 @@ route.post('/login', (req, res) => {
     } = req.body;
     password = md5Handle(password);
     let result = req.$USERDATA.find(item => {
-        return (parseInt(item.phone) === parseInt(account) || item.email === account) && item.password == password;
+        return (parseInt(item.id) === parseInt(account) || parseInt(item.phone) === parseInt(account) || item.email === account) && item.password == password;
     });
     if (result) {
         req.session.phone = result.phone;
