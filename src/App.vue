@@ -15,9 +15,7 @@
     <!-- 底部导航 -->
     <van-tabbar v-model="active" class="btn">
       <van-tabbar-item name="home" icon="home-o" @click="router('Home')"></van-tabbar-item>
-
       <van-tabbar-item name="search" icon="search" @click="router('Find')"></van-tabbar-item>
-
       <van-tabbar-item name="friends" icon="friends-o" @click="router('Ranking')"></van-tabbar-item>
       <van-tabbar-item name="setting" icon="setting-o" @click="router('Personal')"></van-tabbar-item>
     </van-tabbar>
@@ -37,9 +35,13 @@ export default {
   }
 };
 </script>
-<style  lang="less">
+<style scoped  lang="less">
+html,body{
+  width: 100%;
+  overflow: hidden;
+}
 .boxs{
-  margin-top: 1rem;
+  margin: 1rem auto;
 }
 .btn {
   width: 100%;
@@ -78,7 +80,6 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   background: #f7f5fa;
 }
