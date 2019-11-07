@@ -6,10 +6,10 @@
         "email": "863137401@qq.com",
         "password": "8376ac810bb9f231d28fcf1f",
         "sex": 0,
-        "introduce": "帅哥",
+        "introduce": "----",
         "time": 1568640222269,
         "state": 0,
-        "icon": "https://img3.tapimg.com/avatars/bfb488d99461ca73286aa2ad9c8ec15e.jpg?imageView2/1/w/100/q/40/interlace/1/ignore-error/1"
+        "icon": "https://assets.tapimg.com/img/avatar/86.jpg?1"
     },
     {
         "id": 542992,
@@ -20,6 +20,7 @@
         "sex": 0,
         "time": 1573114316003,
         "state": 0,
-        "introduce": "一名程序员"
+        "introduce": "一名程序员",
+        "icon": "https://assets.tapimg.com/img/avatar/86.jpg?1"
     }
 ]

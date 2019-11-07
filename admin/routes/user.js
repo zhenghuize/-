@@ -21,8 +21,10 @@ route.post('/login', (req, res) => {
         return (parseInt(item.id) === parseInt(account) || parseInt(item.phone) === parseInt(account) || item.email === account) && item.password == password;
     });
     if (result) {
-        req.session.phone = result.phone;
-        success(res);
+        req.session.id = result.id;
+        success(res,{
+            data:result
+        });
         return;
     }
     success(res, {
@@ -54,7 +56,8 @@ route.post('/signup', (req, res) => {
         sex: 0,
         time: new Date().getTime(),
         state: 0,
-        introduce: '一名程序员'
+        introduce: '一名程序员',
+        icon: ""
     };
     $USERDATA.push(passDATA);
     writeFile('./mock/user.json', $USERDATA).then(() => {

@@ -138,3 +138,31 @@ RESULT：{
         "score": 评论星数,
         "icon": "头像"
 }
+
+----------
+提交评论
+URL：/game/comment
+METHOD：GET
+PARAMS：id=游戏ID&userid=用户的ID&username=评论用户名&comment=评论内容&score=评论星数
+RESULT：{
+        "id": 1,游戏的ID
+ 	"userid": 31651,用户的ID
+        "username": "评论用户名",
+        "comment": "评论内容"
+        "score": 评论星数,
+        "icon": "头像"
+}
+
+---------
+搜索用户
+URL：/game/comment
+METHOD：GET
+PARAMS：id=游戏ID&userid=用户的ID&username=评论用户名&comment=评论内容&score=评论星数
+RESULT：{
+        "id": 1,游戏的ID
+ 	"userid": 31651,用户的ID
+        "username": "评论用户名",
+        "comment": "评论内容"
+        "score": 评论星数,
+        "icon": "头像"
+}

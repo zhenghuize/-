@@ -22,7 +22,7 @@ route.get('/list', (req, res) => {
     })
 })
 
-//  获取游戏详细信息
+// 获取游戏详细信息
 route.get('/info', (req, res) => {
     console.log(req, res)
     let $GAMEINFO = req.$GAMEINFO;
@@ -137,5 +137,45 @@ route.get('/player', (req, res) => {
     });
 })
 
-// 游戏排行列表
+// 搜索用户
+route.post('/searchuser', (req, res) => {
+    let search = req.body.search,
+        $USERDATA = req.$USERDATA;
+    if (search) {
+        let data = [];
+        $USERDATA.forEach(item => {
+            let userflag = parseInt(item.id) === parseInt(search) || parseInt(item.phone) === parseInt(search) || item.name.includes(search);
+            userflag ? data.push(item) : null;
+        })
+        success(res, {
+            data
+        });
+        return;
+    }
+    success(res, {
+        code: 1,
+        codeText: '当前游戏或用户不存在'
+    })
+});
+
+// 搜索游戏
+route.post('/searchgame', (req, res) => {
+    let search = req.body.search,
+        $GAMELIST = req.$GAMELIST;
+    if (search) {
+        let data = [];
+        $GAMELIST.forEach(item => {
+            item.name.includes(search) ? data.push(item) : null;
+        })
+        success(res, {
+            data
+        });
+        return;
+    }
+    success(res, {
+        code: 1,
+        codeText: '当前用户不存在'
+    })
+});
+
 module.exports = route;
