@@ -53,6 +53,8 @@ app.use(async (req, res, next) => {
     req.$ORDER = JSON.parse(await readFile('./mock/order.json'));
     req.$PLAYER = JSON.parse(await readFile('./mock/player.json'));
     req.$WALL = JSON.parse(await readFile('./mock/wall.json'));
+    req.$WISHLIST = JSON.parse(await readFile('./mock/wishlist.json'));
+    req.$WAREHOUSE = JSON.parse(await readFile('./mock/warehouse.json'));
     next();
 })
 

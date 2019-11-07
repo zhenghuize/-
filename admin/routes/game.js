@@ -24,7 +24,6 @@ route.get('/list', (req, res) => {
 
 // 获取游戏详细信息
 route.get('/info', (req, res) => {
-    console.log(req, res)
     let $GAMEINFO = req.$GAMEINFO;
     let data = $GAMEINFO.filter(item => {
         return item.id === parseInt(req.query.id);
@@ -177,5 +176,85 @@ route.post('/searchgame', (req, res) => {
         codeText: '当前用户不存在'
     })
 });
+
+// 添加到心愿单
+route.post('/addwishlist', (req, res) => {
+    let $WISHLIST = req.$WISHLIST,
+        $GAMELIST = req.$GAMELIST,
+        passDATA = null;
+    $GAMELIST.forEach(item => {
+        parseInt(item.id) === parseInt(req.body.id) ? passDATA = item : null;
+    })
+    passDATA.userid = req.body.userid;
+    $WISHLIST.push(passDATA);
+    writeFile('./mock/wishlist.json', $WISHLIST).then(() => {
+        res.send(success(res));
+    }).catch(() => {
+        res.send(success(res, {
+            code: 1,
+            codeText: '添加失败'
+        }));
+    });
+});
+
+// 添加到仓库
+route.post('/addwarehouse', (req, res) => {
+    let $WAREHOUSE = req.$WAREHOUSE,
+        $GAMELIST = req.$GAMELIST,
+        passDATA = null;
+    $GAMELIST.forEach(item => {
+        parseInt(item.id) === parseInt(req.body.id) ? passDATA = item : null;
+    })
+    passDATA.userid = req.body.userid;
+    $WAREHOUSE.push(passDATA);
+    writeFile('./mock/warehouse.json', $WAREHOUSE).then(() => {
+        res.send(success(res));
+    }).catch(() => {
+        res.send(success(res, {
+            code: 1,
+            codeText: '添加失败'
+        }));
+    });
+});
+
+// 获取心愿单数据
+route.get('/wishlist', (req, res) => {
+    let $WISHLIST = req.$WISHLIST,
+        userid = req.query.userid,
+        data = [];
+    if (!userid) {
+        success(res, {
+            code: 1,
+            codeText: '没有传userid'
+        })
+        return;
+    }
+    $WISHLIST.forEach(item => {
+        parseInt(item.userid) === parseInt(userid) ? data.push(item) : null;
+    });
+    success(res, {
+        data
+    });
+})
+
+// 获取仓库的数据
+route.get('/warehouse', (req, res) => {
+    let $WAREHOUSE = req.$WAREHOUSE,
+        userid = req.query.userid,
+        data = [];
+    if (!userid) {
+        success(res, {
+            code: 1,
+            codeText: '没有传userid'
+        })
+        return;
+    }
+    $WAREHOUSE.forEach(item => {
+        parseInt(item.userid) === parseInt(userid) ? data.push(item) : null;
+    });
+    success(res, {
+        data
+    });
+})
 
 module.exports = route;

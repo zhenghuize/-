@@ -93,6 +93,14 @@ RESULT：{
         "icon": "小logo"
 }
 
+---------
+URL：/game/wall
+METHOD：GET
+PARAMS：
+RESULT：{
+        安利墙信息
+}
+
 ----------
 获取每日新发现信息
 URL：/game/discovery
@@ -104,7 +112,7 @@ RESULT：{
 }
 
 ----------
-获取每日新发现信息
+获取预约信息
 URL：/game/order
 METHOD：GET
 PARAMS：
@@ -114,7 +122,7 @@ RESULT：{
 }
 
 ----------
-获取每日新发现信息
+获取玩家信息
 URL：/game/player
 METHOD：GET
 PARAMS：
@@ -141,28 +149,97 @@ RESULT：{
 
 ----------
 提交评论
-URL：/game/comment
-METHOD：GET
-PARAMS：id=游戏ID&userid=用户的ID&username=评论用户名&comment=评论内容&score=评论星数
-RESULT：{
-        "id": 1,游戏的ID
+URL：/game/addcomment
+METHOD：POST
+PARAMS："id": 1,游戏的ID
  	"userid": 31651,用户的ID
         "username": "评论用户名",
         "comment": "评论内容"
         "score": 评论星数,
         "icon": "头像"
+RESULT：{
+        code:0,
+        codeText:''
 }
 
 ---------
 搜索用户
-URL：/game/comment
-METHOD：GET
-PARAMS：id=游戏ID&userid=用户的ID&username=评论用户名&comment=评论内容&score=评论星数
+URL：/game/searchuser
+METHOD：POST
+PARAMS：search=搜索的内容(可以是id名字)
 RESULT：{
-        "id": 1,游戏的ID
- 	"userid": 31651,用户的ID
-        "username": "评论用户名",
-        "comment": "评论内容"
-        "score": 评论星数,
-        "icon": "头像"
+        用户的信息
+}
+
+---------
+搜索游戏
+URL：/game/searchgame
+METHOD：POST
+PARAMS：search=游戏名
+RESULT：{
+        游戏的信息
+}
+
+---------
+添加到心愿单
+URL：/game/addwishlist
+METHOD：POST
+PARAMS：id = 游戏的id&userid=用户id
+RESULT：{
+        code:0,
+        codeText:''
+}
+
+---------
+添加到仓库
+URL：/game/addwarehouse
+METHOD：POST
+PARAMS：id = 游戏的id&userid=用户id
+RESULT：{
+        code:0,
+        codeText:''
+}
+
+---------
+获取心愿单数据
+URL：/game/wishlist
+METHOD：GET
+PARAMS：userid=当前用户id
+RESULT：{
+        code:0,
+        codeText:''
+}
+
+---------
+获取仓库的数据
+URL：/game/warehouse
+METHOD：GET
+PARAMS：userid=当前用户id
+RESULT：{
+       "id": 2,游戏id
+        "name": "热血三国志ol",名字
+        "score": 7.4,评分
+        "scorenumber": 780,评分人
+        "hotsale": 2312,
+        "introduce": "游戏简介",
+        "pic": "大图",
+        "icon": "logo图",
+        "userid": "123456"用户id
+}
+
+-----------
+获取心愿墙的数据
+URL：/game/wishlist
+METHOD：GET
+PARAMS：userid=当前用户id
+RESULT：{
+       "id": 2,游戏id
+        "name": "热血三国志ol",名字
+        "score": 7.4,评分
+        "scorenumber": 780,评分人
+        "hotsale": 2312,
+        "introduce": "游戏简介",
+        "pic": "大图",
+        "icon": "logo图",
+        "userid": "123456"用户id
 }
