@@ -1,0 +1,140 @@
+﻿***USER***
+----
+用户登录
+URL：/user/login
+METHOD：POST
+PARAMS：account=xxx&password=xxx
+RESULT：{
+	code:0  //=>0成功 1失败
+	codeText:'OK',  //=>CODE状态码描述
+}
+
+----
+检测是否登录
+URL：/user/login
+METHOD：GET
+PARAMS：null
+RESULT：{
+	code:0  
+	codeText:'OK'
+}
+
+----
+退出登录
+URL：/user/signout
+METHOD：GET
+PARAMS：null
+RESULT：{
+	code:0  
+	codeText:'OK'
+}
+
+----
+注册账号
+URL：/user/signup
+METHOD：POST
+PARAMS：account=xxx&password=xxx
+RESULT：{
+	code:0  
+	codeText:'OK'
+}
+
+------
+修改账号信息
+URL：/user/update
+METHOD：POST
+PARAMS：id=123456&name=xxx&phone=xxx&email=xxx&sex=0&introduce=个人简介
+RESULT：{
+	code:0  
+	codeText:'OK'
+}
+
+------
+修改账号密码
+URL：/user/resetpassword
+METHOD：POST
+PARAMS：
+	id=112354  重置某个用户密码
+	password=xxx 修改登录者密码
+RESULT：{
+	code:0  
+	codeText:'OK'
+}
+
+---------
+获取游戏信息列表
+URL：/game/list
+METHOD：GET,
+PARAMS：
+RESULT：{
+        "id":,游戏id
+        "name":"",游戏名
+        "score":7.2,评分  =>热门榜排名
+        "scorenumber":1654,评分人数  =>热玩榜排名
+		"hotsale":7865,  =>热卖榜排名
+        "introduce":"",游戏介绍
+        "pic":"",大图片地址
+        "icon":""小的图片
+    }
+
+----------
+获取游戏详情
+URL：/game/info
+METHOD：GET
+PARAMS：id=点击当前游戏的ID
+RESULT：{
+        "id": 1,
+        "name": "道友请留步",
+        "introduce": "游戏简介"
+        "firm": "游戏厂商名",
+        "score": "评分",
+        "money": "游戏价钱",
+        "pic": "大图",
+        "icon": "小logo"
+}
+
+----------
+获取每日新发现信息
+URL：/game/discovery
+METHOD：GET
+PARAMS：
+RESULT：{
+        "name": "游戏名",
+        "pic": "图片"
+}
+
+----------
+获取每日新发现信息
+URL：/game/order
+METHOD：GET
+PARAMS：
+RESULT：{
+        "name": "游戏名",
+        "pic": "图片"
+}
+
+----------
+获取每日新发现信息
+URL：/game/player
+METHOD：GET
+PARAMS：
+RESULT：{
+        "name":"用户名",
+        "pic":"头像",
+        "prove":"认证名",
+        "icon":"认证的logo"
+}
+
+----------
+获取评论信息
+URL：/game/comment
+METHOD：GET
+PARAMS：id=点击当前游戏的ID
+RESULT：{
+        "id": 1,
+ 	"userid": 31651,
+        "username": "评论用户名",
+        "comment": "评论内容"
+        "score": 评论星数,
+        "icon": "头像"
+}

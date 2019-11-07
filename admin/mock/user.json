@@ -1,0 +1,24 @@
+[
+    {
+        "id": 123456,
+        "name": "郑惠泽",
+        "phone": "18630372287",
+        "email": "863137401@qq.com",
+        "password": "8376ac810bb9f231d28fcf1f",
+        "sex": 0,
+        "introduce": "帅哥",
+        "time": 1568640222269,
+        "state": 0
+    },
+    {
+        "id": 503339,
+        "name": "程序猿",
+        "phone": "18833896172",
+        "email": "",
+        "password": "e807f1fcf82d132f9bb018ca6738a19f",
+        "sex": 0,
+        "time": 1572948595964,
+        "state": 0,
+        "introduce": "一名程序员"
+    }
+]
