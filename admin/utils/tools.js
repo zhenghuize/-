@@ -1,6 +1,9 @@
 // 二次密码加密
 function md5Handle(val) {
-    return val.substring(4).split('').reverse().join('').substring(4);
+    val = val.substring(4);
+    val = val.split('').reverse().join('');
+    val = val.substring(4);
+    return val;
 }
 
 // 统一处理服务器返回的结果

@@ -31,7 +31,7 @@ RESULT：{
 
 ----
 注册账号
-URL：/user/signout
+URL：/user/signup
 METHOD：POST
 PARAMS：account=xxx&password=xxx
 RESULT：{
@@ -69,343 +69,100 @@ PARAMS：
 RESULT：{
         "id":,游戏id
         "name":"",游戏名
-        "score":7.2,评分
-        "scorenumber":1654,评分人数
+        "score":7.2,评分  =>热门榜排名
+        "scorenumber":1654,评分人数  =>热玩榜排名
+		"hotsale":7865,  =>热卖榜排名
         "introduce":"",游戏介绍
         "pic":"",大图片地址
         "icon":""小的图片
     }
 
-
-
-
-	
-获取用户通讯录
-URL：/user/list
+----------
+获取游戏详情
+URL：/game/info
 METHOD：GET
-PARAMS：departmentId=0&search=''
+PARAMS：id=点击当前游戏的ID
 RESULT：{
-	code:0  
-	codeText:'OK',
-	data:[{
-		id: 1,
-		name: "珠峰培训",
-		sex: 0,
-		email: "1144709265@qq.com",
-		phone: "18310612838",
-		departmentId: 1,
-		department: '总裁办',
-		jobId: 1,
-		job: '管理员',
-		desc: "珠峰培训最高管理员账户"
-	},...]
-}
-----
-获取用户详细信息
-URL：/user/info
-METHOD：GET
-PARAMS：userId=1  不传是获取登录者信息
-RESULT：{
-	code:0  
-	codeText:'OK',
-	data:{
-		id: 1,
-		name: "珠峰培训",
-		sex: 0,
-		email: "1144709265@qq.com",
-		phone: "18310612838",
-		departmentId: 1,
-		department: '总裁办',
-		jobId: 1,
-		job: '管理员',
-		desc: "珠峰培训最高管理员账户"
-	}
-}
-----
-增加用户信息
-URL：/user/add
-METHOD：POST
-PARAMS：name=xxx&sex=0&email=xxx&phone=xxx&departmentId=1&jobId=1&desc=xxx
-RESULT：{
-	code:0  
-	codeText:'OK'
-}
-----
-
-----
-删除用户信息
-URL：/user/delete
-METHOD：GET
-PARAMS：userId=1
-RESULT：{
-	code:0  
-	codeText:'OK'
-}
-----
-
-----
-获取用户权限
-URL：/user/power
-METHOD：GET
-PARAMS：NULL
-RESULT：{
-	code:0  
-	codeText:'OK',
-	power:'xxx|xxx'
+        "id": 1,
+        "name": "道友请留步",
+        "introduce": "游戏简介"
+        "firm": "游戏厂商名",
+        "score": "评分",
+        "money": "游戏价钱",
+        "pic": "大图",
+        "icon": "小logo"
 }
 
-***DEPARTMENT部门管理***
-----
-获取部门信息
-URL：/department/list
+----------
+获取每日新发现信息
+URL：/game/discovery
 METHOD：GET
-PARAMS：null
+PARAMS：
 RESULT：{
-	code:0  
-	codeText:'OK',
-	data:[{
-		id: 1,
-		name: "总裁办",
-		desc: ""
-	},...]
-}
-----
-获取部门详细信息
-URL：/department/info
-METHOD：GET
-PARAMS：departmentId=1
-RESULT：{
-	code:0  
-	codeText:'OK',
-	data:{
-		id: 1,
-		name: "总裁办",
-		desc: ""
-	}
-}
-----
-增加部门信息
-URL：/department/add
-METHOD：POST
-PARAMS：name=xxx&desc=xxx
-RESULT：{
-	code:0  
-	codeText:'OK'
-}
-----
-修改部门信息
-URL：/department/update
-METHOD：POST
-PARAMS：departmentId=1&name=xxx&desc=xxx
-RESULT：{
-	code:0  
-	codeText:'OK'
-}
-----
-删除部门信息
-URL：/department/delete
-METHOD：GET
-PARAMS：departmentId=1
-RESULT：{
-	code:0  
-	codeText:'OK'
+        "name": "游戏名",
+        "pic": "图片"
 }
 
-***JOB职务管理***
-----
-获取职务信息
-URL：/job/list
+----------
+获取每日新发现信息
+URL：/game/order
 METHOD：GET
-PARAMS：null
+PARAMS：
 RESULT：{
-	code:0  
-	codeText:'OK',
-	data:[{
-		id: 1,
-		name: "",
-		desc: "",
-		power:''
-	},...]
-}
-----
-获取职务详细信息
-URL：/job/info
-METHOD：GET
-PARAMS：jobId=1
-RESULT：{
-	code:0  
-	codeText:'OK',
-	data:{
-		id: 1,
-		name: "",
-		desc: "",
-		power:'xxx|xxx'
-	}
-}
-----
-增加职务信息
-URL：/job/add
-METHOD：POST
-PARAMS：name=xxx&desc=xxx&power=xxx|xxx
-RESULT：{
-	code:0  
-	codeText:'OK'
-}
-----
-修改职务信息
-URL：/job/update
-METHOD：POST
-PARAMS：jobId=1&name=xxx&desc=xxx&power=xxx|xxx
-RESULT：{
-	code:0  
-	codeText:'OK'
-}
-----
-删除职务信息
-URL：/job/delete
-METHOD：GET
-PARAMS：jobId=1
-RESULT：{
-	code:0  
-	codeText:'OK'
+        "name": "游戏名",
+        "pic": "图片"
 }
 
-***CUSTOMER客户管理***
-----
-增加客户信息
-URL：/customer/add
-METHOD：POST
-PARAMS：name=xxx&sex=xxx&email=xxx&phone=xxx&QQ=xxx&weixin=xxx&type=xxx&address=xxx
-RESULT：{
-	code:0  
-	codeText:'OK'
-}
-----
-修改客户信息
-URL：/customer/update
-METHOD：POST
-PARAMS：customerId=xxx&name=xxx&sex=xxx&email=xxx&phone=xxx&QQ=xxx&weixin=xxx&type=xxx&address=xxx
-RESULT：{
-	code:0  
-	codeText:'OK'
-}
-----
-删除客户信息
-URL：/customer/delete
+----------
+获取每日新发现信息
+URL：/game/player
 METHOD：GET
-PARAMS：customerId=xxx
+PARAMS：
 RESULT：{
-	code:0  
-	codeText:'OK'
-}
-----
-获取客户详细信息
-URL：/customer/info
-METHOD：GET
-PARAMS：customerId=1
-RESULT：{
-	code:0  
-	codeText:'OK',
-	data:{
-		id: 1,
-		name: "",
-		sex: 0,
-		email: '',
-		phone: '',
-		QQ: '',
-		weixin: '',
-		type: '',
-		address: "",
-		userId: 0,
-		userName:''
-	}
-}
-----
-获取客户列表
-URL：/customer/list
-METHOD：GET
-PARAMS：lx=my&type=''&search=''&limit=10&page=1
-   lx=my获取我的客户
-   lx=all获取全部客户（默认）
-RESULT：{
-	code:0  
-	codeText:'OK',
-	page:0,
-	limit:0,
-	total:0,
-	totalPage:0,
-	data:[{
-		id: 1,
-		name: "",
-		sex: 0,
-		email: '',
-		phone: '',
-		QQ: '',
-		weixin: '',
-		type: '',
-		address: "",
-		userId: 0,
-		userName:''
-	},...]
+        "name":"用户名",
+        "pic":"头像",
+        "prove":"认证名",
+        "icon":"认证的logo"
 }
 
-***VISIT回访记录管理***
-----
-获取回访记录信息
-URL：/visit/list
+----------
+获取评论信息
+URL：/game/comment
 METHOD：GET
-PARAMS：customerId=xxx
+PARAMS：id=点击当前游戏的ID
 RESULT：{
-	code:0  
-	codeText:'OK',
-	data:[{
-		id: 1,
-		customerId:1,
-		customerName:'xxx',
-		visitText: "",
-		visitTime: ""
-	},...]
+        "id": 1,游戏的ID
+ 	"userid": 31651,用户的ID
+        "username": "评论用户名",
+        "comment": "评论内容"
+        "score": 评论星数,
+        "icon": "头像"
 }
-----
-获取回访详细信息
-URL：/visit/info
+
+----------
+提交评论
+URL：/game/comment
 METHOD：GET
-PARAMS：visitId=1
+PARAMS：id=游戏ID&userid=用户的ID&username=评论用户名&comment=评论内容&score=评论星数
 RESULT：{
-	code:0  
-	codeText:'OK',
-	data:{
-		id: 1,
-		customerId:1,
-		customerName:'xxx',
-		visitText: "",
-		visitTime: ""
-	}
+        "id": 1,游戏的ID
+ 	"userid": 31651,用户的ID
+        "username": "评论用户名",
+        "comment": "评论内容"
+        "score": 评论星数,
+        "icon": "头像"
 }
-----
-增加回访信息
-URL：/visit/add
-METHOD：POST
-PARAMS：customerId=xxx&visitText=xxx&visitTime=xxx
-RESULT：{
-	code:0  
-	codeText:'OK'
-}
-----
-修改回访信息
-URL：/visit/update
-METHOD：POST
-PARAMS：visitId=1&customerId=xxx&visitText=xxx&visitTime=xxx
-RESULT：{
-	code:0  
-	codeText:'OK'
-}
-----
-删除回访信息
-URL：/visit/delete
+
+---------
+搜索用户
+URL：/game/comment
 METHOD：GET
-PARAMS：visitId=1
+PARAMS：id=游戏ID&userid=用户的ID&username=评论用户名&comment=评论内容&score=评论星数
 RESULT：{
-	code:0  
-	codeText:'OK'
+        "id": 1,游戏的ID
+ 	"userid": 31651,用户的ID
+        "username": "评论用户名",
+        "comment": "评论内容"
+        "score": 评论星数,
+        "icon": "头像"
 }
