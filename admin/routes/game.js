@@ -44,7 +44,7 @@ route.get('/info', (req, res) => {
 route.get('/comment', (req, res) => {
     let $COMMENT = req.$COMMENT;
     let data = $COMMENT.filter(item => {
-        return item.id === parseInt(req.query.id);
+        return parseInt(item.id) === parseInt(req.query.id);
     })
     if (data) {
         success(res, {

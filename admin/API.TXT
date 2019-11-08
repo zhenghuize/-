@@ -153,11 +153,10 @@ RESULT：{
 URL：/game/addcomment
 METHOD：POST
 PARAMS："id": 1,游戏的ID
- 	"userid": 31651,用户的ID
+ 	"userid": 123456,用户的ID
         "username": "评论用户名",
         "comment": "评论内容"
-        "score": 评论星数,
-        "icon": "头像"
+        "score": 评论星数
 RESULT：{
         code:0,
         codeText:''
