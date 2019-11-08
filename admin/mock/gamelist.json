@@ -17,7 +17,7 @@
         "hotsale":2312,
         "introduce":"如果我是曹操，一定揽孔明、杀刘备、灭孙权、统东汉群雄争霸！",
         "pic":"https://static-tapad.tapdb.net/NTAzNTg3MzFANWRiMTA3Yjc1ZDQ2MQ.jpg?imageView2/0/w/1080/q/80/format/jpg/interlace/1/ignore-error/1",
-        "icon":"https://img.tapimg.com/market/lcs/011fb7666b62e3f5b8f9fb37eaf55e91_360.png?imageView2/1/w/240/q/80/interlace/1/ignore-error/1"
+        "icon":"https://img.tapimg.com/market/lcs/011fb7666b62e3f5b8f9fb37eaf55e91_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
     },{
         "id":3,
         "name":"流言侦探",
@@ -44,7 +44,7 @@
         "hotsale":7854,
         "introduce":"在星界开启你的史诗冒险吧！",
         "pic":"https://img.tapimg.com/market/images/8ab7dda06b31a8253d5bfdb9171483cd.jpg?imageMogr2/auto-orient/thumbnail/2080x/strip/gravity/Center/crop/2080x828/format/jpg/quality/80/interlace/1",
-        "icon":"https://img.tapimg.com/market/icons/c39d8df263dd13c7ad7e32a8c743bae1_360.png?imageView2/1/w/180/q/40/interlace/1/ignore-error/1"
+        "icon":"https://img.tapimg.com/market/icons/c39d8df263dd13c7ad7e32a8c743bae1_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
     },{
         "id":6,
         "name":"幸存者危城",
@@ -62,6 +62,33 @@
         "hotsale":4965,
         "introduce":"当2048遇上RPG，合成与打怪的乐趣",
         "pic":"https://img.tapimg.com/market/images/4a1b91cb3b8719af9138a70c67bc776b.png?imageView2/2/h/560/q/80/format/jpg/interlace/1/ignore-error/1",
-        "icon":"https://img.tapimg.com/market/icons/9786df4cbddb19cf7680ac847d5bcdaf_360.png?imageView2/1/w/180/q/40/interlace/1/ignore-error/1"
+        "icon":"https://img.tapimg.com/market/icons/9786df4cbddb19cf7680ac847d5bcdaf_360.png?imageMogr2/auto-orient/strip"
+    },{
+        "id":8,
+        "name":"隐藏的家伙",
+        "score":9.3,
+        "scorenumber":905,
+        "hotsale":965,
+        "introduce":"手绘世界中的魔性寻物冒险",
+        "pic":"https://img2.tapimg.com/bbcode/images/c7be5813325d8cfa4df87bd1a250eefd.png?imageMogr2/auto-orient/strip/thumbnail/!420x236r/gravity/Center/crop/420x236/format/jpg/interlace/1/quality/80",
+        "icon":"https://img.tapimg.com/market/lcs/bdf21e1211195657cf70c49dc0e3ed03_360.png?imageView2/1/w/180/q/40/interlace/1/ignore-error/1"
+    },{
+        "id":9,
+        "name":"白猫与龙王城",
+        "score":8.7,
+        "scorenumber":95,
+        "hotsale":75,
+        "introduce":"你能帮住蠢萌的白猫平安逃脱吗？",
+        "pic":"https://img2.tapimg.com/bbcode/images/c7be5813325d8cfa4df87bd1a250eefd.png?imageMogr2/auto-orient/strip/thumbnail/!420x236r/gravity/Center/crop/420x236/format/jpg/interlace/1/quality/80",
+        "icon":"https://img.tapimg.com/market/lcs/3ce9defde350512f5d8565022410e473_360.png?imageMogr2/auto-orient/strip"
+    },{
+        "id":10,
+        "name":"奥拉星",
+        "score":5.2,
+        "scorenumber":19390,
+        "hotsale":7225,
+        "introduce":"童年初心，强势回归，奥拉星在等你~！",
+        "pic":"https://static-tapad.tapdb.net/MjQ0NjcxNDRANWQ1ZjhlYjAyZTE5OA.jpg?imageView2/0/w/1080/q/80/format/jpg/interlace/1/ignore-error/1",
+        "icon":"https://img.tapimg.com/market/icons/e2b831826e8bacccf33d06e861e6497c_360.png?imageView2/1/w/240/q/80/interlace/1/ignore-error/1"
     }
 ]

@@ -66,7 +66,7 @@ route.post('/addcomment', (req, res) => {
         ...req.body,
         icon: "https://img3.tapimg.com/avatars/bfb488d99461ca73286aa2ad9c8ec15e.jpg?imageView2/1/w/100/q/40/interlace/1/ignore-error/1"
     };
-    $COMMENT.push(passDATA);
+    $COMMENT.unshift(passDATA);
     writeFile('./mock/comment.json', $COMMENT).then(() => {
         res.send(success(res));
     }).catch(() => {
@@ -186,7 +186,7 @@ route.post('/addwishlist', (req, res) => {
         parseInt(item.id) === parseInt(req.body.id) ? passDATA = item : null;
     })
     passDATA.userid = req.body.userid;
-    $WISHLIST.push(passDATA);
+    $WISHLIST.unshift(passDATA);
     writeFile('./mock/wishlist.json', $WISHLIST).then(() => {
         res.send(success(res));
     }).catch(() => {
@@ -206,7 +206,7 @@ route.post('/addwarehouse', (req, res) => {
         parseInt(item.id) === parseInt(req.body.id) ? passDATA = item : null;
     })
     passDATA.userid = req.body.userid;
-    $WAREHOUSE.push(passDATA);
+    $WAREHOUSE.unshift(passDATA);
     writeFile('./mock/warehouse.json', $WAREHOUSE).then(() => {
         res.send(success(res));
     }).catch(() => {

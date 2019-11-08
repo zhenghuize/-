@@ -17,7 +17,7 @@
         "score": 7.4,
         "money": "22.00",
         "pic": "https://img2.tapimg.com/bbcode/images/2078672cc36040cd3364d883a8c4904d.jpg?imageView2/1/w/300/h/168/q/90/format/jpg/interlace/1/ignore-error/1",
-        "icon": "https://img.tapimg.com/market/lcs/011fb7666b62e3f5b8f9fb37eaf55e91_360.png?imageMogr2/auto-orient/strip"
+        "icon": "https://img.tapimg.com/market/lcs/011fb7666b62e3f5b8f9fb37eaf55e91_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
     },{
         "id": 3,
         "name": "流言侦探",
@@ -44,7 +44,7 @@
         "score": "6.9",
         "money": "2.00",
         "pic": "https://img.tapimg.com/market/images/f8a4a083e7a828a4dc572eaaab7406a6.jpg?imageView2/2/h/560/q/80/format/jpg/interlace/1/ignore-error/1",
-        "icon": "https://img.tapimg.com/market/icons/c39d8df263dd13c7ad7e32a8c743bae1_360.png?imageView2/1/w/180/q/40/interlace/1/ignore-error/1"
+        "icon": "https://img.tapimg.com/market/icons/c39d8df263dd13c7ad7e32a8c743bae1_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
     },{
         "id": 6,
         "name": "幸存者危城",
@@ -62,6 +62,33 @@
         "score": "9.1",
         "money": "20.00",
         "pic": "https://img.tapimg.com/market/images/0559b17c5e1520734bc9e5c91ce54b8b.jpg?imageView2/0/w/1080/q/40/format/jpg/interlace/1/ignore-error/1",
-        "icon": "https://img.tapimg.com/market/lcs/4f99d394126466b06a2533c2168ddc57_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
+        "icon": "https://img.tapimg.com/market/icons/9786df4cbddb19cf7680ac847d5bcdaf_360.png?imageMogr2/auto-orient/strip"
+    },{
+        "id": 8,
+        "name": "隐藏的家伙",
+        "introduce": "黑白手绘，魔性配音的寻物冒险游戏——《隐藏的家伙》终于正式来到TapTap平台。 TapTap 年度游戏大赏最佳游戏提名,苹果iPad年度游戏获胜者+ BIG-旧金山独立游戏展最佳游戏获胜者+ Anifilm：最佳青少年游戏获胜者+ IMGA：评审团荣誉提名+ Unity 最佳移动游戏获胜者+ TGA 年度最佳移动游戏获胜者+ IGN：最佳移动游戏入选+ 苹果 Appstore 超过7000篇评测，五星好评！+ 等等。隐藏的家伙可不是一款普通的大家来找茬游戏。你需要在充满互动与迷你风景的手绘插画中寻找躲藏的家伙。卷起帐篷，砍掉树丛，开关大门，甚至还可以戳戳鳄鱼，看看会发生什么奇妙的反应。独特的美术，魔性的配音，有趣的交互反馈，令人眼花缭乱的巨大地图，让这款游戏充满探索的乐趣。 游戏特色 —— 20多张可供探索的手绘地图（有一部分地图极其巨大250多种寻找目标, 1600余种人声录制音效,400多个独特的互动方式,3种颜色模式：普通模式，怀旧照片模式和夜间模式,22种语言,持续的更新，未来还会有全新地图加入！",
+        "firm": "indienova",
+        "score": "9.3",
+        "money": "18.00",
+        "pic": "https://img.tapimg.com/market/images/bfd8e3ffe0ee3055f5f1c24f66733bb2.jpg?imageView2/0/w/1080/q/40/format/jpg/interlace/1/ignore-error/1",
+        "icon": "https://img.tapimg.com/market/lcs/bdf21e1211195657cf70c49dc0e3ed03_360.png?imageView2/1/w/180/q/40/interlace/1/ignore-error/1"
+    },{
+        "id": 9,
+        "name": "白猫与龙王城（测试版）",
+        "introduce": "我们的那只白猫，在电视上得知了邪恶龙王的故事。「勇者的血液在沸腾喵！！」为了拯救无辜的人们，他踏上了传说中的旅途......龙王的城堡里到处都是机关和谜语，我们的白猫勇者能成功打败敌人吗？◎游戏内容◎沙雕白猫逃脱游戏第9弹边看漫画边玩的逃脱游戏！◎游戏特征◎・完全免费・有充分的「提示」不用担心卡关・有特色的BGM，请注意音量・蠢萌蠢萌的世界观・有剧情漫画◎推荐人群◎・爱猫人士・喜欢蠢萌游戏的人・休闲游戏玩家・逃脱游戏爱好者",
+        "firm": "扑家工作室",
+        "score": "8.7",
+        "money": "10.00",
+        "pic": "https://img.tapimg.com/market/images/91a18453d59c05a9e344b930771d1bec.jpg?imageView2/0/w/1080/q/40/format/jpg/interlace/1/ignore-error/1",
+        "icon": "https://img.tapimg.com/market/lcs/3ce9defde350512f5d8565022410e473_360.png?imageMogr2/auto-orient/strip"
+    },{
+        "id": 10,
+        "name": "奥拉星",
+        "introduce": "《奥拉星手游》是深受亿万玩家喜爱的《奥拉星》官方正版手游，由原班人马历时2年精心打造。在保留原汁原味的亚比收集、养成、战斗的基础上，拓展了漫漫宇宙、浩瀚星辰的世界探索玩法，近百只亚比凭借全新的3D姿态，为你呈现一个青春、热血的全新奥拉世界。",
+        "firm": "广州天梯网络科技有限公司",
+        "score": "5.2",
+        "money": "8.00",
+        "pic": "https://static-tapad.tapdb.net/MjQ0NjcxNDRANWQ1ZjhlYjAyZTE5OA.jpg?imageView2/0/w/1080/q/80/format/jpg/interlace/1/ignore-error/1",
+        "icon": "https://img.tapimg.com/market/icons/e2b831826e8bacccf33d06e861e6497c_360.png?imageView2/1/w/240/q/80/interlace/1/ignore-error/1"
     }
 ]

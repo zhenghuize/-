@@ -94,6 +94,7 @@ RESULT：{
 }
 
 ---------
+获取安利墙信息
 URL：/game/wall
 METHOD：GET
 PARAMS：
