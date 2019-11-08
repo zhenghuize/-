@@ -64,7 +64,8 @@ route.post('/addcomment', (req, res) => {
         passDATA = null;
     passDATA = {
         ...req.body,
-        icon: "http://127.0.0.1:1574/86.jpg"
+        icon: "http://127.0.0.1:1574/86.jpg",
+        key: $COMMENT.length + 1
     };
     $COMMENT.unshift(passDATA);
     writeFile('./mock/comment.json', $COMMENT).then(() => {
