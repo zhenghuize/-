@@ -1,0 +1,24 @@
+[
+    {
+        "id": 7,
+        "name": "下一把剑",
+        "score": 9.1,
+        "scorenumber": 6754,
+        "hotsale": 4965,
+        "introduce": "当2048遇上RPG，合成与打怪的乐趣",
+        "pic": "http://127.0.0.1:1574/4a1b91cb3b8719af9138a70c67bc776b.jpg",
+        "icon": "http://127.0.0.1:1574/9786df4cbddb19cf7680ac847d5bcdaf_360.png",
+        "userid": "542992"
+    },
+    {
+        "id": 9,
+        "name": "白猫与龙王城",
+        "score": 8.7,
+        "scorenumber": 95,
+        "hotsale": 75,
+        "introduce": "你能帮住蠢萌的白猫平安逃脱吗？",
+        "pic": "http://127.0.0.1:1574/221576b5cef94433bd9488d1db8e68fb.jpg",
+        "icon": "http://127.0.0.1:1574/3ce9defde350512f5d8565022410e473_360.png",
+        "userid": "123456"
+    }
+]

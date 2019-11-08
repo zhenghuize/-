@@ -53,12 +53,15 @@ app.use(async (req, res, next) => {
     req.$ORDER = JSON.parse(await readFile('./mock/order.json'));
     req.$PLAYER = JSON.parse(await readFile('./mock/player.json'));
     req.$WALL = JSON.parse(await readFile('./mock/wall.json'));
+    req.$WISHLIST = JSON.parse(await readFile('./mock/wishlist.json'));
+    req.$WAREHOUSE = JSON.parse(await readFile('./mock/warehouse.json'));
     next();
 })
 
 // 构建express路由
 app.use('/user', require('./routes/user'));
 app.use('/game', require('./routes/game'));
+app.use(express.static('./images'));
 app.use((req, res) => {
     res.status(404);
     res.send('NOT FOUND!');

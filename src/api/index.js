@@ -1,5 +1,9 @@
 import axios from 'axios';
+<<<<<<< HEAD
 axios.defaults.baseURL = 'http://127.0.0.1:1574';
+=======
+axios.defaults.baseURL = 'http://localhost:1574';
+>>>>>>> c5848bbd7845c0411b441fdc286045d891b46d6d
 axios.defaults.withCredentials = true;
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 axios.defaults.transformRequest = function (data) {
