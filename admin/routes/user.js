@@ -57,7 +57,7 @@ route.post('/signup', (req, res) => {
         time: new Date().getTime(),
         state: 0,
         introduce: '一名程序员',
-        icon: ""
+        icon: "http://127.0.0.1:1574/86.jpg"
     };
     $USERDATA.push(passDATA);
     writeFile('./mock/user.json', $USERDATA).then(() => {

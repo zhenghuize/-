@@ -64,7 +64,7 @@ route.post('/addcomment', (req, res) => {
         passDATA = null;
     passDATA = {
         ...req.body,
-        icon: "https://img3.tapimg.com/avatars/bfb488d99461ca73286aa2ad9c8ec15e.jpg?imageView2/1/w/100/q/40/interlace/1/ignore-error/1"
+        icon: "http://127.0.0.1:1574/86.jpg"
     };
     $COMMENT.unshift(passDATA);
     writeFile('./mock/comment.json', $COMMENT).then(() => {
