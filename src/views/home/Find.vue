@@ -2,7 +2,7 @@
   <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
     <div class="findBox">
       <!-- 轮播图 -->
-      <van-swipe :autoplay="3000" :height="auto">
+      <van-swipe :autoplay="3000">
         <van-swipe-item v-for="(image, index) in images" :key="index">
           <img class="bannerImg" :src="image" />
         </van-swipe-item>
@@ -25,50 +25,11 @@
         <!-- 主体 -->
         <div class="newDayCenter">
           <ul class="newDayUi">
-            <li class="newDayLi">
+            <li class="newDayLi" v-for="(item, index) in everyDay" :key="index">
               <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
+                <img :src="item.img"/>
               </a>
-              <span>韦恩的最后零件（测试服）</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最后零件（测试服）</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最后零件（测试服）</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最后零件（测试服）</span>
+              <span v-html="item.name"></span>
             </li>
           </ul>
         </div>
@@ -401,9 +362,15 @@
 </template>
 
 <script>
+import { newDay } from "../../api/findData";
 export default {
   data() {
     return {
+      //每日新发现
+      everyDay: {
+        img: '',
+        name: ''
+      },
       //滑动标签数据
       listBoxData: [
         "往期推荐",
@@ -458,6 +425,12 @@ export default {
     showPopup() {
       this.show = true;
     }
+  },
+  created() {
+    newDay().then(result => {
+      window.console.log(result)
+       this.everyDay=result.data;
+    });
   }
 };
 </script>
@@ -689,7 +662,7 @@ ul::-webkit-scrollbar {
     background-position: -1rem -1rem;
     .newDayCenter {
       background: none;
-      .newDayUi{
+      .newDayUi {
         margin-left: 2.4rem;
       }
     }

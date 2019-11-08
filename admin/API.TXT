@@ -71,7 +71,7 @@ RESULT：{
         "name":"",游戏名
         "score":7.2,评分  =>热门榜排名
         "scorenumber":1654,评分人数  =>热玩榜排名
-		"hotsale":7865,  =>热卖榜排名
+	"hotsale":7865,  =>热卖榜排名
         "introduce":"",游戏介绍
         "pic":"",大图片地址
         "icon":""小的图片
