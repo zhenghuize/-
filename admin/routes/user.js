@@ -21,15 +21,32 @@ route.post('/login', (req, res) => {
         return (parseInt(item.id) === parseInt(account) || parseInt(item.phone) === parseInt(account) || item.email === account) && item.password == password;
     });
     if (result) {
-        req.session.id = result.id;
-        success(res,{
-            data:result
-        });
+        req.session.userid = result.id;
+        success(res);
         return;
     }
     success(res, {
         code: 1,
         codeText: '账号密码不匹配'
+    });
+})
+
+// 获取当前登录的信息
+route.get('/userinfo', (req, res) => {
+    let $USERDATA = req.$USERDATA;
+    let data = $USERDATA.filter(item => {
+        return item.id === req.session.userid;
+    })
+    delete data[0].password;
+    console.log(data)
+    if(!req.session.id){
+        success(res,{
+            code:1,
+            codeText:'当前用户未登录'
+        })
+    }
+    success(res,{
+        data
     });
 })
 
@@ -72,8 +89,8 @@ route.post('/signup', (req, res) => {
 
 // 验证是否登录
 route.get('/login', (req, res) => {
-    let phone = req.session.phone;
-    if (phone) {
+    let userid = req.session.userid;
+    if (userid) {
         success(res);
         return;
     }
@@ -86,6 +103,7 @@ route.get('/login', (req, res) => {
 // 退出登录
 route.get('/signout', (req, res) => {
     req.session.phone = null;
+    req.$userid=null
     success(res);
 })
 
