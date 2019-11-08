@@ -1,63 +1,140 @@
 <template>
   <div>
-    <van-tabs class="titleNav" background="#FCFCFC" color="#14b9c8" title-active-color="#14b9c8">
-      <van-tab title="热门榜">
-        <div class="ListBox">
-          <span>1</span>
+    <van-tabs
+      @click="onClick"
+      class="titleNav"
+      background="#FCFCFC"
+      color="#14b9c8"
+      title-active-color="#14b9c8"
+    >
+      <van-tab title="评分榜">
+        <div class="ListBox" v-for="(item, index) in allGameList" :key="index">
+          <span v-html="index+1"></span>
           <div class="imgBox">
-            <img
-              src="https://img.tapimg.com/market/lcs/ab7069f7aa80a3e1bdebcbe0d18bc575_360.png?imageMogr2/auto-orient/strip"
-              alt
-            />
+            <img :src="item.icon" />
           </div>
           <div class="message">
-            <div class="name">江湖悠悠（测试版）</div>
+            <div class="name" v-html="item.name"></div>
             <div class="bottom">
               <van-icon name="star" color="#14b9c8" />
-              <span class="score">&nbsp;9.1</span>
+              <span class="score" v-html="`&nbsp;`+item.score"></span>
               <span class="describe">删档测试</span>
             </div>
-            <div class="button">下载</div>
           </div>
+          <div class="button">下载</div>
         </div>
       </van-tab>
-      <van-tab title="新品榜">内容 2</van-tab>
-      <van-tab title="预约榜">内容 3</van-tab>
-      <van-tab title="热卖榜">内容 4</van-tab>
-      <van-tab title="热玩榜">内容 5</van-tab>
-      <van-tab title="厂商">内容 6</van-tab>
+      <van-tab title="热玩榜">
+        <div class="ListBox" v-for="(item, index) in allGameList" :key="index">
+          <span v-html="index+1"></span>
+          <div class="imgBox">
+            <img :src="item.icon" />
+          </div>
+          <div class="message">
+            <div class="name" v-html="item.name"></div>
+            <div class="bottom">
+              <van-icon name="star" color="#14b9c8" />
+              <span class="score" v-html="`&nbsp;`+item.score"></span>
+              <span class="describe">删档测试</span>
+            </div>
+          </div>
+          <div class="button">下载</div>
+        </div>
+      </van-tab>
+      <van-tab title="热卖榜">
+        <div class="ListBox" v-for="(item, index) in allGameList" :key="index">
+          <span v-html="index+1"></span>
+          <div class="imgBox">
+            <img :src="item.icon" />
+          </div>
+          <div class="message">
+            <div class="name" v-html="item.name"></div>
+            <div class="bottom">
+              <van-icon name="star" color="#14b9c8" />
+              <span class="score" v-html="`&nbsp;`+item.score"></span>
+              <span class="describe">删档测试</span>
+            </div>
+          </div>
+          <div class="button">下载</div>
+        </div>
+      </van-tab>
+      <van-tab title="新品榜">
+        <div class="ListBox" v-for="(item, index) in allGameList" :key="index">
+          <span v-html="index+1"></span>
+          <div class="imgBox">
+            <img :src="item.icon" />
+          </div>
+          <div class="message">
+            <div class="name" v-html="item.name"></div>
+            <div class="bottom">
+              <van-icon name="star" color="#14b9c8" />
+              <span class="score" v-html="`&nbsp;`+item.score"></span>
+              <span class="describe">删档测试</span>
+            </div>
+          </div>
+          <div class="button">下载</div>
+        </div>
+      </van-tab>
     </van-tabs>
-    <!--  <van-tabs class="titleNav" background="#FCFCFC" color="#14b9c8" title-active-color="#14b9c8">
-      <van-tab v-for="(item,index) in titleData" :key="index" :title="item">
-        <div class="ListBox">
-          <span>{{index+1}}</span>
-          <div class="imgBox">
-            <img
-              src="https://img.tapimg.com/market/lcs/ab7069f7aa80a3e1bdebcbe0d18bc575_360.png?imageMogr2/auto-orient/strip"
-              alt
-            />
-          </div>
-          <div class="message">
-            <div class="name">江湖悠悠（测试版）</div>
-            <div class="bottom">
-              <van-icon name="star" color="#14b9c8" />
-              <span class="score">&nbsp;9.1</span>
-              <span class="describe">删档测试</span>
-            </div>
-            <div class="button">下载</div>
-          </div>
-        </div>
-      </van-tab>
-    </van-tabs>-->
   </div>
 </template>
 
 <script>
+import { gameList } from "../../api/findData";
 export default {
   data() {
     return {
-      active: 0,
+      allGameList: [],
+      active: 0
     };
+  },
+  methods: {
+    onClick(event) {
+      //评分榜
+      if (event === 0) {
+        gameList().then(result => {
+          result.data.sort((a, b) => {
+            return b.score - a.score;
+          });
+          this.allGameList = result.data;
+        });
+      }
+      //热玩榜
+      if (event === 1) {
+        gameList().then(result => {
+          result.data.sort((a, b) => {
+            return b.scorenumber - a.scorenumber;
+          });
+          this.allGameList = result.data;
+        });
+      }
+      //热卖榜
+      if (event === 2) {
+        gameList().then(result => {
+          result.data.sort((a, b) => {
+            return b.hotsale - a.hotsale;
+          });
+          this.allGameList = result.data;
+        });
+      }
+      //新品榜
+      if(event===3){
+        gameList().then(result=>{
+          result.data.sort((a,b)=>{
+            return b.id-a.id;
+          });
+          this.allGameList = result.data;
+        })
+      }
+    }
+  },
+  created() {
+    gameList().then(result => {
+      result.data.sort((a, b) => {
+        return b.score - a.score;
+      });
+      this.allGameList = result.data;
+    });
   }
 };
 </script>
@@ -66,27 +143,31 @@ export default {
 .ListBox {
   position: relative;
   padding-left: 0.2rem;
-  font-size: 0.49rem;
+  font-size: 0.42rem;
   display: flex;
   height: 1.6rem;
   line-height: 1.6rem;
-  background: powderblue;
+  background: white;
   overflow: hidden;
+  border-bottom: 0.02rem solid gainsboro;
   .imgBox {
     position: absolute;
     top: 10%;
     left: 0.7rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 15%;
+    overflow: hidden;
     img {
-      width: 1.3rem;
-      height: 1.3rem;
+      width: 100%;
+      height: 100%;
     }
   }
   .message {
     position: absolute;
-    left: 2.3rem;
+    left: 2.2rem;
     height: 100%;
     font-size: 0.38rem;
-    position: absolute;
     .name {
       position: relative;
       top: 0.5rem;
@@ -102,19 +183,19 @@ export default {
         margin-left: 0.2rem;
       }
     }
-    .button {
-      position: absolute;
-      top: 30%;
-      right: -1.8rem;
-      font-size: 0.3rem;
-      width: 1.5rem;
-      height: 0.6rem;
-      line-height: 0.6rem;
-      border-radius: 10%;
-      text-align: center;
-      background: #14b9c8;
-      color: white;
-    }
+  }
+  .button {
+    position: absolute;
+    top: 30%;
+    right: 0.2rem;
+    font-size: 0.3rem;
+    width: 1.5rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    border-radius: 10%;
+    text-align: center;
+    background: #14b9c8;
+    color: white;
   }
 }
 </style>
