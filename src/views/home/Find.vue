@@ -25,9 +25,9 @@
         <!-- 主体 -->
         <div class="newDayCenter">
           <ul class="newDayUi">
-            <li class="newDayLi" v-for="(item, index) in everyDay" :key="index">
+            <li class="newDayLi" v-for="item in everyDay" :key="item.name">
               <a class="newDayImgBox">
-                <img :src="item.img"/>
+                <img :src="item.pic" alt="item.name" />
               </a>
               <span v-html="item.name"></span>
             </li>
@@ -44,50 +44,11 @@
         <!-- 主体 -->
         <div class="newDayCenter">
           <ul class="newDayUi">
-            <li class="newDayLi">
+            <li class="newDayLi" v-for="item in newGameData" :key="item.name">
               <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
+                <img :src="item.pic" alt="item.name" />
               </a>
-              <span>韦恩的最后零件（测试服）</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最后零件（测试服）</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最后零件（测试服）</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最后零件（测试服）</span>
+              <span v-html="item.name"></span>
             </li>
           </ul>
         </div>
@@ -119,119 +80,14 @@
         </div>
         <!-- 主体 -->
         <ul class="recommendedPlayerUl">
-          <li class="recommendedPlayerLi">
+          <li class="recommendedPlayerLi" v-for="item in recommendedPlayerData" :key="item.name">
             <div class="recommendedPlayerImgBox">
-              <img
-                src="https://img3.tapimg.com/avatars/31e7bba0b7ea1f976bef15eabda0d3b5.gif?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-              />
+              <img :src="item.pic" />
             </div>
-            <span class="name">会纯阳</span>
+            <span class="name" v-html="name"></span>
             <div>
-              <img
-                class="icon"
-                src="https://img.tapimg.com/market/images/e3f67d658224613a4935ad23df4205c6.png"
-              />
-              <span class="role">TapTap玩赏家</span>
-            </div>
-            <van-button class="follow" is-link @click="showPopup">+&nbsp;关注</van-button>
-            <!-- <van-cell ></van-cell> -->
-            <van-popup class="popup" v-model="show">
-              <van-loading class="loading" color="#14b9c8" />正在添加关注
-            </van-popup>
-          </li>
-          <li class="recommendedPlayerLi">
-            <div class="recommendedPlayerImgBox">
-              <img
-                src="https://img3.tapimg.com/avatars/31e7bba0b7ea1f976bef15eabda0d3b5.gif?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-              />
-            </div>
-            <span class="name">会纯阳</span>
-            <div>
-              <img
-                class="icon"
-                src="https://img.tapimg.com/market/images/e3f67d658224613a4935ad23df4205c6.png"
-              />
-              <span class="role">TapTap玩赏家</span>
-            </div>
-            <van-button class="follow" is-link @click="showPopup">+&nbsp;关注</van-button>
-            <!-- <van-cell ></van-cell> -->
-            <van-popup class="popup" v-model="show">
-              <van-loading class="loading" color="#14b9c8" />正在添加关注
-            </van-popup>
-          </li>
-          <li class="recommendedPlayerLi">
-            <div class="recommendedPlayerImgBox">
-              <img
-                src="https://img3.tapimg.com/avatars/31e7bba0b7ea1f976bef15eabda0d3b5.gif?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-              />
-            </div>
-            <span class="name">会纯阳</span>
-            <div>
-              <img
-                class="icon"
-                src="https://img.tapimg.com/market/images/e3f67d658224613a4935ad23df4205c6.png"
-              />
-              <span class="role">TapTap玩赏家</span>
-            </div>
-            <van-button class="follow" is-link @click="showPopup">+&nbsp;关注</van-button>
-            <!-- <van-cell ></van-cell> -->
-            <van-popup class="popup" v-model="show">
-              <van-loading class="loading" color="#14b9c8" />正在添加关注
-            </van-popup>
-          </li>
-          <li class="recommendedPlayerLi">
-            <div class="recommendedPlayerImgBox">
-              <img
-                src="https://img3.tapimg.com/avatars/31e7bba0b7ea1f976bef15eabda0d3b5.gif?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-              />
-            </div>
-            <span class="name">会纯阳</span>
-            <div>
-              <img
-                class="icon"
-                src="https://img.tapimg.com/market/images/e3f67d658224613a4935ad23df4205c6.png"
-              />
-              <span class="role">TapTap玩赏家</span>
-            </div>
-            <van-button class="follow" is-link @click="showPopup">+&nbsp;关注</van-button>
-            <!-- <van-cell ></van-cell> -->
-            <van-popup class="popup" v-model="show">
-              <van-loading class="loading" color="#14b9c8" />正在添加关注
-            </van-popup>
-          </li>
-          <li class="recommendedPlayerLi">
-            <div class="recommendedPlayerImgBox">
-              <img
-                src="https://img3.tapimg.com/avatars/31e7bba0b7ea1f976bef15eabda0d3b5.gif?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-              />
-            </div>
-            <span class="name">会纯阳</span>
-            <div>
-              <img
-                class="icon"
-                src="https://img.tapimg.com/market/images/e3f67d658224613a4935ad23df4205c6.png"
-              />
-              <span class="role">TapTap玩赏家</span>
-            </div>
-            <van-button class="follow" is-link @click="showPopup">+&nbsp;关注</van-button>
-            <!-- <van-cell ></van-cell> -->
-            <van-popup class="popup" v-model="show">
-              <van-loading class="loading" color="#14b9c8" />正在添加关注
-            </van-popup>
-          </li>
-          <li class="recommendedPlayerLi">
-            <div class="recommendedPlayerImgBox">
-              <img
-                src="https://img3.tapimg.com/avatars/31e7bba0b7ea1f976bef15eabda0d3b5.gif?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-              />
-            </div>
-            <span class="name">会纯阳</span>
-            <div>
-              <img
-                class="icon"
-                src="https://img.tapimg.com/market/images/e3f67d658224613a4935ad23df4205c6.png"
-              />
-              <span class="role">TapTap玩赏家</span>
+              <img class="icon" :src="item.icon" />
+              <span class="role" v-html="item.prove"></span>
             </div>
             <van-button class="follow" is-link @click="showPopup">+&nbsp;关注</van-button>
             <!-- <van-cell ></van-cell> -->
@@ -245,56 +101,17 @@
       <div class="gameTesting slideBox">
         <!-- 头部 -->
         <div class="gameTestingTitle slideTitle">
-          <h4>新游预定</h4>
+          <h4>游戏测试</h4>
           <a href>查看更多</a>
         </div>
         <!-- 主体 -->
         <div class="newDayCenter">
           <ul class="newDayUi">
-            <li class="newDayLi">
+            <li class="newDayLi" v-for="item in gameTesting" :key="item.name">
               <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
+                <img :src="item.pic" alt />
               </a>
-              <span>韦恩的最后零件（测试服）</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最后零件（测试服）</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最后零件（测试服）</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最后零件（测试服）</span>
+              <span v-html="item.name"></span>
             </li>
           </ul>
         </div>
@@ -309,50 +126,11 @@
         <!-- 主体 -->
         <div class="newDayCenter">
           <ul class="newDayUi newDayUi">
-            <li class="newDayLi">
+            <li class="newDayLi" v-for="item in everyDay" :key="item.name">
               <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
+                <img :src="item.pic" />
               </a>
-              <span>韦恩的最后零件（测试服）</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最后零件（测试服）</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最后零件（测试服）</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最</span>
-            </li>
-            <li class="newDayLi">
-              <a class="newDayImgBox">
-                <img
-                  src="https://img.tapimg.com/market/lcs/09dc955ab9093023de7d75ca9b996b49_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-                  alt
-                />
-              </a>
-              <span>韦恩的最后零件（测试服）</span>
+              <span v-html="item.name"></span>
             </li>
           </ul>
         </div>
@@ -362,15 +140,18 @@
 </template>
 
 <script>
-import { newDay } from "../../api/findData";
+import { newDay, newGame, recommendedPlayer } from "../../api/findData";
 export default {
   data() {
     return {
       //每日新发现
-      everyDay: {
-        img: '',
-        name: ''
-      },
+      everyDay: [],
+      //新游预定
+      newGameData: [],
+      //推荐玩家
+      recommendedPlayerData: [],
+      //游戏测试
+      gameTesting: [],
       //滑动标签数据
       listBoxData: [
         "往期推荐",
@@ -427,9 +208,19 @@ export default {
     }
   },
   created() {
+    //每日新发现
     newDay().then(result => {
-      window.console.log(result)
-       this.everyDay=result.data;
+      this.everyDay = result.data;
+    });
+    //新游预定&游戏测试
+    newGame().then(result => {
+      this.newGameData = result.data;
+      this.gameTesting = result.data;
+      // this.gameTesting.reverse();
+    });
+    //推荐玩家
+    recommendedPlayer().then(result => {
+      this.recommendedPlayerData = result.data;
     });
   }
 };
