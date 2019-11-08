@@ -1,6 +1,7 @@
 [
     {
         "name":"十一一",
+<<<<<<< HEAD
         "pic":"https://img3.tapimg.com/avatars/db31240a3d449f579461c7f0d8684470.jpg?imageView2/1/w/256/q/40/interlace/1/ignore-error/1",
         "prove":"TapTap玩赏家",
         "icon":"https://img.tapimg.com/market/images/e3f67d658224613a4935ad23df4205c6.png"
@@ -46,5 +47,52 @@
         "pic":"https://img3.tapimg.com/avatars/7e140ffaf15128e2556cc82ff37dd95a.jpg?imageMogr2/auto-orient/strip/thumbnail/!300x300r/gravity/Center/crop/300x300/format/jpg/interlace/1/quality/80",
         "prove":"TapTap玩赏家",
         "icon":"https://img.tapimg.com/market/images/e3f67d658224613a4935ad23df4205c6.png"
+=======
+        "pic":"http://127.0.0.1:1574/db31240a3d449f579461c7f0d8684470.jpg",
+        "prove":"TapTap玩赏家",
+        "icon":"http://127.0.0.1:1574/e3f67d658224613a4935ad23df4205c6.png"
+    },
+    {
+        "name":"飞竞FeverGame",
+        "pic":"http://127.0.0.1:1574/225b43688c24cf321519395764324c72.jpg",
+        "prove":"虎牙先锋团",
+        "icon":"http://127.0.0.1:1574/4494c007b02f0794c5caa3d61577e66c.png"
+    },
+    {
+        "name":"土豆⁶⁶⁶₆₆₆666",
+        "pic":"http://127.0.0.1:1574/a02cad3a461d7fa4dac643d7ec8d653c.png",
+        "prove":"TapTap玩赏家",
+        "icon":"http://127.0.0.1:1574/e3f67d658224613a4935ad23df4205c6.png"
+    },
+    {
+        "name":"晃晃悠悠💚",
+        "pic":"http://127.0.0.1:1574/2b6e306e2c4c15b5443dae43b81a6397.jpg",
+        "prove":"TapTap玩赏家",
+        "icon":"http://127.0.0.1:1574/e3f67d658224613a4935ad23df4205c6.png"
+    },
+    {
+        "name":"BlueFire Studio",
+        "pic":"http://127.0.0.1:1574/63f121bfbc5e1fb887307019d305484b.png",
+        "prove":"BlueFire Studio 官方",
+        "icon":"http://127.0.0.1:1574/4494c007b02f0794c5caa3d61577e66c.png"
+    },
+    {
+        "name":"花音",
+        "pic":"http://127.0.0.1:1574/91.jpg",
+        "prove":"TapTap玩赏家",
+        "icon":"http://127.0.0.1:1574/e3f67d658224613a4935ad23df4205c6.png"
+    },
+    {
+        "name":"神乐Mea大可爱！",
+        "pic":"http://127.0.0.1:1574/28e546658f778ad661bb92aaa567ef25.png",
+        "prove":"TapTap玩赏家",
+        "icon":"http://127.0.0.1:1574/e3f67d658224613a4935ad23df4205c6.png"
+    },
+    {
+        "name":"汤圆王子",
+        "pic":"http://127.0.0.1:1574/7e140ffaf15128e2556cc82ff37dd95a.jpg",
+        "prove":"TapTap玩赏家",
+        "icon":"http://127.0.0.1:1574/e3f67d658224613a4935ad23df4205c6.png"
+>>>>>>> 0d902ce690547bf1a0c30a9fed5bb84991b577f7
     }
 ]

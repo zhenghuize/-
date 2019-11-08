@@ -9,7 +9,11 @@
         "introduce": "----",
         "time": 1568640222269,
         "state": 0,
+<<<<<<< HEAD
         "icon": "https://assets.tapimg.com/img/avatar/86.jpg?1"
+=======
+        "icon": "http://127.0.0.1:1574/86.jpg"
+>>>>>>> 0d902ce690547bf1a0c30a9fed5bb84991b577f7
     },
     {
         "id": 542992,
@@ -21,6 +25,10 @@
         "time": 1573114316003,
         "state": 0,
         "introduce": "一名程序员",
+<<<<<<< HEAD
         "icon": "https://assets.tapimg.com/img/avatar/86.jpg?1"
+=======
+        "icon": "http://127.0.0.1:1574/86.jpg"
+>>>>>>> 0d902ce690547bf1a0c30a9fed5bb84991b577f7
     }
 ]

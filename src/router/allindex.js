@@ -24,6 +24,7 @@ const routes = [{
     {
         path: '/Login',
         component: Login
+<<<<<<< HEAD
     }, {
         path: '/Zhuce',
         component: Zhuce
@@ -31,6 +32,9 @@ const routes = [{
         path: '/Personal',
         component: Personal
     }, {
+=======
+    },{
+>>>>>>> 0d902ce690547bf1a0c30a9fed5bb84991b577f7
         path: '*',
         component: Login
     }

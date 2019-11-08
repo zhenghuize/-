@@ -71,7 +71,11 @@ RESULT：{
         "name":"",游戏名
         "score":7.2,评分  =>热门榜排名
         "scorenumber":1654,评分人数  =>热玩榜排名
+<<<<<<< HEAD
 		"hotsale":7865,  =>热卖榜排名
+=======
+	"hotsale":7865,  =>热卖榜排名
+>>>>>>> 0d902ce690547bf1a0c30a9fed5bb84991b577f7
         "introduce":"",游戏介绍
         "pic":"",大图片地址
         "icon":""小的图片
@@ -153,11 +157,18 @@ RESULT：{
 URL：/game/addcomment
 METHOD：POST
 PARAMS："id": 1,游戏的ID
+<<<<<<< HEAD
  	"userid": 31651,用户的ID
         "username": "评论用户名",
         "comment": "评论内容"
         "score": 评论星数,
         "icon": "头像"
+=======
+ 	"userid": 123456,用户的ID
+        "username": "评论用户名",
+        "comment": "评论内容"
+        "score": 评论星数
+>>>>>>> 0d902ce690547bf1a0c30a9fed5bb84991b577f7
 RESULT：{
         code:0,
         codeText:''

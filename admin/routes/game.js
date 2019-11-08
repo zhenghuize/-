@@ -44,7 +44,11 @@ route.get('/info', (req, res) => {
 route.get('/comment', (req, res) => {
     let $COMMENT = req.$COMMENT;
     let data = $COMMENT.filter(item => {
+<<<<<<< HEAD
         return item.id === parseInt(req.query.id);
+=======
+        return parseInt(item.id) === parseInt(req.query.id);
+>>>>>>> 0d902ce690547bf1a0c30a9fed5bb84991b577f7
     })
     if (data) {
         success(res, {
@@ -64,7 +68,12 @@ route.post('/addcomment', (req, res) => {
         passDATA = null;
     passDATA = {
         ...req.body,
+<<<<<<< HEAD
         icon: "https://img3.tapimg.com/avatars/bfb488d99461ca73286aa2ad9c8ec15e.jpg?imageView2/1/w/100/q/40/interlace/1/ignore-error/1"
+=======
+        icon: "http://127.0.0.1:1574/86.jpg",
+        key: $COMMENT.length + 1
+>>>>>>> 0d902ce690547bf1a0c30a9fed5bb84991b577f7
     };
     $COMMENT.unshift(passDATA);
     writeFile('./mock/comment.json', $COMMENT).then(() => {

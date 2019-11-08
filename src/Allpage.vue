@@ -7,9 +7,9 @@
 export default {};
 </script>
 <style>
-.box {
-  width: 500px;
-  height: 400px;
-  margin: 300px auto;
+
+html{
+  
+  background: #f8f6fb;
 }
 </style>
