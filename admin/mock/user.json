@@ -1,1 +1,35 @@
-[{"id":123456,"name":"郑惠泽","phone":"18630372287","email":"863137401@qq.com","password":"8376ac810bb9f231d28fcf1f","sex":0,"introduce":"哈哈哈哈哈哈","time":1568640222269,"state":0,"icon":"https://assets.tapimg.com/img/avatar/86.jpg?1","username":"郑惠泽"},{"id":542992,"name":"程序猿","phone":"18833896172","email":"","password":"8376ac810bb9f231d28fcf1f","sex":0,"time":1573114316003,"state":0,"introduce":"一名程序员","icon":"https://assets.tapimg.com/img/avatar/86.jpg?1"},{"id":407302,"name":"程序猿","phone":"17349701236","email":"","password":"57f6a905ccd028329b0a8324","sex":0,"time":1573441590427,"state":0,"introduce":"一名程序员","icon":"http://127.0.0.1:1574/86.jpg"}]
+[{
+    "id": 123456,
+    "name": "郑惠泽",
+    "phone": "18630372287",
+    "email": "863137401@qq.com",
+    "password": "8376ac810bb9f231d28fcf1f",
+    "sex": 0,
+    "introduce": "哈哈哈哈哈哈",
+    "time": 1568640222269,
+    "state": 0,
+    "icon": "https://assets.tapimg.com/img/avatar/86.jpg?1",
+    "username": "郑惠泽"
+}, {
+    "id": 542992,
+    "name": "程序猿",
+    "phone": "18833896172",
+    "email": "",
+    "password": "8376ac810bb9f231d28fcf1f",
+    "sex": 0,
+    "time": 1573114316003,
+    "state": 0,
+    "introduce": "一名程序员",
+    "icon": "https://assets.tapimg.com/img/avatar/86.jpg?1"
+}, {
+    "id": 407302,
+    "name": "程序猿",
+    "phone": "17349701236",
+    "email": "",
+    "password": "57f6a905ccd028329b0a8324",
+    "sex": 0,
+    "time": 1573441590427,
+    "state": 0,
+    "introduce": "一名程序员",
+    "icon": "http://127.0.0.1:1574/86.jpg"
+}]

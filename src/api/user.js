@@ -32,3 +32,22 @@ export function updateInfo(options) {
     window.console.log(options);
     return axios.post('/user/update', options)
 }
+
+//获取心愿墙信息
+export function wishList(userid) {
+    return axios.get('/game/wishlist', {
+        params: {
+            userid
+        }
+    })
+}
+
+//获取仓库数据
+export function wareHouse(userid) {
+    window.console.log(userid);
+    return axios.get('/game/warehouse', {
+        params: {
+            userid
+        }
+    })
+}

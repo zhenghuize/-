@@ -42,8 +42,47 @@
     </div>
     <div class="footerBox">
       <van-tabs v-model="activeName">
-        <van-tab title="心愿单" name="a">内容 1</van-tab>
-        <van-tab title="仓库" name="b">内容 2</van-tab>
+        <van-tab title="心愿单" name="a">
+          <div class="xin">
+            <div class="left">
+              <span v-text="xinNum"></span>
+              <div class="img">
+                <img :src="xinIcon" alt />
+              </div>
+            </div>
+            <div class="center">
+              <h3 v-text="xinName"></h3>
+              <div class="fen">
+                <van-icon name="star-o" class="wu" />
+                <span class="fen2" v-text="xinFen"></span>
+              </div>
+              <span class="lian">联机</span>
+            </div>
+            <div class="right">
+              <div class="button">购买</div>
+            </div>
+          </div>
+        </van-tab>
+        <van-tab title="仓库" name="b">
+          <div class="xin">
+            <div class="left">
+              <span v-text="ckNum"></span>
+              <div class="img">
+                <img :src="ckIcon" alt />
+              </div>
+            </div>
+            <div class="center">
+              <h3 v-text="ckName"></h3>
+              <div class="fen">
+                <van-icon name="star-o" class="wu" />
+              </div>
+              <span>联机</span>
+            </div>
+            <div class="right">
+              <div class="button">购买</div>
+            </div>
+          </div>
+        </van-tab>
         <van-tab title="签到" name="c">
           <van-circle
             v-model="currentRate"
@@ -61,10 +100,18 @@
 </template>
 
 <script>
-import { userInfo } from "../../api/user.js";
+import { userInfo, wishList, wareHouse } from "../../api/user.js";
 export default {
   data() {
     return {
+      xinFen: null,
+      xinIcon: "",
+      xinNum: null,
+      xinName: "",
+      ckFen: null,
+      ckIcon: "",
+      ckNum: null,
+      ckName: "",
       smileNum: 0,
       zanNum: 0,
       icon: "",
@@ -111,15 +158,36 @@ export default {
     }
   },
   created() {
-    userInfo().then(result => {
+    userInfo()
+      .then(result => {
+        if (parseInt(result.code) === 0) {
+          let info = result.data;
+          let [{ name, id, introduce, icon }] = info;
+          this.username = name;
+          this.userId = id;
+          this.jianjie = introduce;
+          this.icon = icon;
+          localStorage.setItem('id',id);
+          return id;
+        }
+      })
+      .then(userid => {
+        wishList(userid).then(result => {
+          if (parseInt(result.code) === 0) {
+            this.xinNum = result.data.id;
+            this.xinName = result.data.name;
+            this.xinIcon = result.data.icon;
+            this.xinFen = result.data.score;
+          }
+        });
+      });
+    wareHouse(this.userId).then(result => {
       if (parseInt(result.code) === 0) {
-        let info = result.data;
-        let [{ name, id, introduce, icon }] = info;
-        this.username = name;
-        this.userId = id;
-        this.jianjie = introduce;
-        this.icon = icon;
-        // localStorage.setItem(info);
+        window.console.log(result.data);
+        this.ckNum = result.data.id;
+        this.ckName = result.data.name;
+        this.ckIcon = result.data.icon;
+        this.ckFen = result.data.score;
       }
     });
   }
@@ -264,7 +332,7 @@ export default {
     background-color: rgba(0, 176, 191) !important;
   }
   .footerBox {
-    margin-top: 7rem;
+    margin-top: 5rem;
     background: #eeeeee;
     height: 10rem;
     .van-tabs {
@@ -289,6 +357,139 @@ export default {
       display: inline-block;
       border: 0.01rem solid gray;
       border-radius: 0.5rem;
+    }
+    .xin {
+      display: flex;
+      width: 95%;
+      height: 1.5rem;
+      border: 0.01rem solid gray;
+      margin: 0 auto;
+      margin-top: 0.1rem;
+      border-radius: 0.3rem;
+      .left {
+        height: 100%;
+        width: 35%;
+        span {
+          display: inline-block;
+          margin-top: 0.6rem;
+          margin-left: 0.6rem;
+        }
+        .img {
+          display: inline-block;
+          height: 80%;
+          width: 50%;
+          margin-top: 0.1rem;
+          margin-left: 0.25rem;
+          vertical-align: top;
+          border-radius: 0.3rem;
+          background: pink;
+        }
+      }
+      .center {
+        box-sizing: border-box;
+        padding-top: 0.1rem;
+        width: 50%;
+        height: 100%;
+        .fen {
+          width: 0.3rem;
+          height: 0.3rem;
+          background: rgba(0, 176, 191);
+          border-radius: 50%;
+          margin-top: 0.1rem;
+          margin-bottom: 0.1rem;
+          .wu {
+            color: #fff;
+            margin-left: 0.03rem;
+          }
+          .fen2 {
+            position: relative;
+            top: -0.3rem;
+            left: 0.4rem;
+          }
+        }
+        .lian {
+          padding: 0.05rem;
+          border: 0.01rem solid rgba(0, 176, 191);
+          border-radius: 0.1rem;
+        }
+      }
+      .right {
+        .button {
+          box-sizing: border-box;
+          margin-top: 0.5rem;
+          width: 1rem;
+          height: 0.5rem;
+          background: rgba(0, 176, 191);
+          text-align: center;
+          padding: 0.05rem;
+          color: #fff;
+          font-size: 0.18rem;
+        }
+      }
+    }
+    .xin1 {
+      display: flex;
+      width: 95%;
+      height: 1.5rem;
+      border: 0.01rem solid gray;
+      margin: 0 auto;
+      margin-top: 0.1rem;
+      border-radius: 0.3rem;
+      .left {
+        height: 100%;
+        width: 35%;
+        span {
+          display: inline-block;
+          margin-top: 0.6rem;
+          margin-left: 0.6rem;
+        }
+        .img {
+          display: inline-block;
+          height: 80%;
+          width: 50%;
+          margin-top: 0.1rem;
+          margin-left: 0.25rem;
+          vertical-align: top;
+          border-radius: 0.3rem;
+          background: pink;
+        }
+      }
+      .center {
+        box-sizing: border-box;
+        padding-top: 0.1rem;
+        width: 50%;
+        height: 100%;
+        .fen {
+          width: 0.3rem;
+          height: 0.3rem;
+          background: rgba(0, 176, 191);
+          border-radius: 50%;
+          margin-top: 0.1rem;
+          margin-bottom: 0.1rem;
+          .wu {
+            color: #fff;
+            margin-left: 0.03rem;
+          }
+        }
+        span {
+          padding: 0.05rem;
+          border: 0.01rem solid rgba(0, 176, 191);
+          border-radius: 0.1rem;
+        }
+      }
+      .right {
+        .button {
+          box-sizing: border-box;
+          margin-top: 0.5rem;
+          width: 1rem;
+          height: 0.5rem;
+          background: rgba(0, 176, 191);
+          text-align: center;
+          padding: 0.05rem;
+          color: #fff;
+          font-size: 0.18rem;
+        }
+      }
     }
   }
 }
