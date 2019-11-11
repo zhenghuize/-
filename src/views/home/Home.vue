@@ -1,19 +1,11 @@
 <template>
   <div class="Home">
     <van-pull-refresh class="refresh" v-model="isLoading" @refresh="onRefresh">
-      <div class="yeka1">
-        <img
-          class="img"
-          src="https://img.tapimg.com/market/images/88d6966c346e0393abea432ee7aa26ea.jpg?imageView2/0/w/1080/q/40/format/jpg/interlace/1/ignore-error/1"
-          alt
-        />
+      <div class="yeka1" @click="info(3)">
+        <img class="img" src="http://127.0.0.1:1574/44164812d38c7b49bd18c2882012df7a.jpg" alt />
         <p class="tuijian">编辑推荐</p>
         <div class="xiang">
-          <img
-            class="tou"
-            src="https://img.tapimg.com/market/lcs/d8169499e83d7fff17b9f514894db175_360.png?imageView2/1/w/180/q/40/interlace/1/ignore-error/1"
-            alt
-          />
+          <img class="tou" src="http://127.0.0.1:1574/d8169499e83d7fff17b9f514894db175_360.png" alt />
           <div>
             <p>流言侦探</p>
             <p>惊险剧情小说，在曼谷暴雨中再度展开</p>
@@ -36,14 +28,14 @@
           <div class="item">
             <div>
               <p>
-                <img :src="item.tou" alt />
+                <img class="xio" :src="item.usericon" alt />
                 {{item.name}}
               </p>
             </div>
-            <van-rate :size="0.3+'rem'" v-model="value" readonly />
+            <van-rate :size="0.3+'rem'" v-model="item.star" readonly />
             <div>
-              <p class="pj">{{item.text}}</p>
-              <img :src="item.src" alt />
+              <p class="pj">{{item.comment}}</p>
+              <img :src="item.gameicon" alt />
             </div>
           </div>
         </van-swipe-item>
@@ -75,54 +67,27 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapState, mapActions } = createNamespacedHelpers("Home");
+const { mapState, mapActions ,mapMutations} = createNamespacedHelpers("Home");
+import { Dialog } from "vant";
 export default {
   data() {
     return {
-      count: 0,
       value: 3,
-      arr: [
-        {
-          id: 0,
-          p3: "来自热门",
-          img2:
-            "https://img.tapimg.com/market/images/f10042350edd841f48b3aebe337d639a.png?imageMogr2/auto-orient/thumbnail/2080x/strip/gravity/Center/crop/2080x828/format/jpg/quality/80/interlace/1",
-          obj: {
-            img:
-              "https://img.tapimg.com/market/icons/7930bca7859b8d0a3e0034c23c50b37b_360.png?imageView2/1/w/180/q/40/interlace/1/ignore-error/1",
-            p1: "贪婪洞窟",
-            p2: "4978人评分",
-            p3: "全新宠物系统上线",
-            p4: "8.1"
-          }
-        }
-      ],
-      anArr: [
-        {
-          id: 0,
-          tou:
-            "https://img.tapimg.com/market/images/22f1196f825298281376608459bfa7fe.png",
-          name: "你就是医我的药评价江湖悠悠（测试版）",
-          src:
-            "https://img.tapimg.com/market/lcs/ab7069f7aa80a3e1bdebcbe0d18bc575_360.png?imageView2/1/w/240/q/80/interlace/1/ignore-error/1",
-          text:
-            "游戏不错，给人一种眼前一亮的感觉，画面，建模各方面都中上吧！但是国风游戏，钢琴bgm什么鬼，一下就把我带出了那种意境，bgm换成萧，笛子，葫芦丝都行啊！你说是不是！好好的一个环境布局亏在bgm上面是不是有点亏！"
-        }
-      ],
-      swipeWidth: document.documentElement.offsetWidth - 75,
+      swipeWidth: document.documentElement.offsetWidth - 85,
       isLoading: false
     };
   },
   computed: {
-    ...mapState(["data"])
+    ...mapState(["data", "anArr"])
   },
   methods: {
-    ...mapActions(["queryData"]),
+    ...mapActions(["queryData", "queryWt"]),
+    ...mapMutations(["Update"]),
     onRefresh() {
       setTimeout(() => {
+        this.Update();
         this.$toast("刷新成功");
         this.isLoading = false;
-        this.count++;
       }, 500);
     },
     info(lx) {
@@ -132,21 +97,31 @@ export default {
         href: location.href,
         lx
       };
-      localStorage.setItem('obj',JSON.stringify(obj));
+      localStorage.setItem("obj", JSON.stringify(obj));
       location.href = location.origin + `/allpage.html#/Details`;
     }
   },
   created() {
-    this.queryData();
-    window.console.log(this.data);
+    this.queryData().then(() => {
+      if (this.data.length == 0) {
+        Dialog.alert({
+          message: "哦吼,获取数据失败了"
+        });
+      }
+    });
+    this.queryWt();
   }
 };
 </script>
 
 <style scoped lang='less'>
+.xio {
+  border-radius: 50%;
+}
 .warp {
   font-size: 0.23rem;
-  color: darkcyan;
+  color: black;
+      font-weight: 550;
   img {
     width: 100%;
     border-radius: 4px;
@@ -181,7 +156,7 @@ export default {
       }
     }
     .biao {
-      font-weight: 600;
+      font-weight: 900;
       font-size: 0.3rem;
     }
   }
@@ -243,7 +218,7 @@ export default {
 }
 .anli {
   width: 100%;
-  color: #826faf;
+  color: black;
   font-size: 0.3rem;
   font-weight: 600;
   display: flex;
@@ -252,11 +227,10 @@ export default {
     margin: 0.1rem 0.1rem;
     &:nth-of-type(2) {
       float: right;
-      color: rgb(20, 185, 200);
+      color: black;
     }
   }
 }
-
 .tuijian {
   font-size: 0.28rem;
   color: white;
@@ -273,7 +247,6 @@ export default {
   // margin: 0 auto;
   // background: pink;
 }
-
 .yeka1 {
   height: 6.9rem;
   border-radius: 4%;
@@ -281,8 +254,9 @@ export default {
   margin-top: 0.3rem;
   position: relative;
   .img {
-    width: 100%;
+    width: 200%;
     height: 100%;
+    transform: translateX(-20%);
     position: absolute;
     top: 0;
     left: 0;
@@ -325,7 +299,6 @@ export default {
         }
       }
     }
-
     p {
       font-weight: 800;
       font-size: 0.26rem;

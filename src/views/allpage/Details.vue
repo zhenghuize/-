@@ -1,46 +1,61 @@
 <template>
-  <div class="find">
+  <div class="find" :style="{backgroundColor:objState.AppbjColor,minHeight:H+'px'}">
     <!-- 顶部导航 -->
-    <div class="nav">
-      <div @click="tuichu">
+    <div class="nav" :style="{backgroundColor:objState.AppbjColor}">
+      <div @click="tuichu" :style="{color:objState.color}">
         <van-icon name="down" size="0.35rem" class="fanhui" />
       </div>
-      <div :class="{div:n==0}" @click="Details">Details</div>
-      <div :class="{div:n==1}" @click="Comment">Comment</div>
-      <div>Action</div>
+      <div
+        :class="{div:n==0}"
+        @click="Details"
+        :style="{color:objState.color,borderColor:objState.color}"
+      >Details</div>
+      <div
+        :class="{div:n==1}"
+        @click="Comment"
+        :style="{color:objState.color,borderColor:objState.color}"
+      >Comment</div>
+      <div :style="{color:objState.color,borderColor:objState.color}">Action</div>
     </div>
     <!-- 内容 -->
     <div class="xiangqing" v-if="flag==1">
-      <div class="tubox">
-        <img :src="data.pic" alt />
-      </div>
-      <div class="textbox">
-        <div class="txtbox">
-          <img :src="data.icon" alt />
-          <div>
-            <p class="p1">{{data.name}}</p>
-            <p class="p3">￥{{data.money}}</p>
-            <p>{{data.firm}}</p>
-            <p class="p4">{{data.score}}</p>
-          </div>
+      <div v-if="mydata!==null">
+        <div class="tubox">
+          <img :src="mydata.pic" alt />
         </div>
-        <!-- <button class=""></button> -->
-        <!-- <div class="button">dawdwad</div> -->
-        <div class="text">{{data.introduce}}</div>
-        <!-- <van-button :loading='true' size='mini' type="info" loading-text="加载中..." /> -->
-        <div class="btn" @click="sub">加入心愿单</div>
+        <div class="textbox">
+          <div class="txtbox">
+            <img :src="mydata.icon" alt />
+            <div>
+              <p class="p1">{{mydata.name}}</p>
+              <p class="p3">￥{{mydata.money}}</p>
+              <p>{{mydata.firm}}</p>
+              <p class="p4">{{mydata.score}}</p>
+            </div>
+          </div>
+          <!-- <button class=""></button> -->
+          <!-- <div class="button">dawdwad</div> -->
+          <div class="text">{{mydata.introduce}}</div>
+          <!-- <van-button :loading='true' size='mini' type="info" loading-text="加载中..." /> -->
+          <div class="btn" @click="sub">加入心愿单</div>
+        </div>
       </div>
     </div>
     <!-- 评论区 -->
     <div class="warp" v-if="flag==2">
       <div class="ping">-评论区-</div>
-      <div class="commentTxt" v-for="item in comment" :key="item.id">
-        <img :src="item.icon" alt />
-        <p class="children">{{item.username}}</p>
-        <van-rate class="children" v-model="item.score" readonly />
-        <p class="children">{{item.comment}}</p>
+      <div v-if="Ct.length==0" class="tishi">还没人评论，快来抢沙发</div>
+      <div v-if="Ct.length!==0">
+        <div class="commentTxt" v-for="item in Ct" :key="item.key">
+          <img :src="item.icon" alt />
+          <div>
+            <p class="children">{{item.username}}</p>
+            <van-rate class="children" v-model="item.score" readonly />
+            <p class="ct">{{item.comment}}</p>
+          </div>
+        </div>
       </div>
-      <div class="btnTxt" @click="show=!show">
+      <div class="btnTxt" @click="comments">
         <van-icon name="edit" />
       </div>
       <van-popup class="from" v-model="show" @closed="closed">
@@ -59,10 +74,16 @@
         <div class="frombtn" @click="frombtn">提交</div>
       </van-popup>
     </div>
+
+    <nihao val="dawd"></nihao>
   </div>
 </template>
 
 <script>
+import { createNamespacedHelpers } from "vuex";
+const { mapState, mapActions } = createNamespacedHelpers("detailsx");
+import { Dialog } from "vant";
+import { Notify } from "vant";
 export default {
   data() {
     return {
@@ -73,96 +94,80 @@ export default {
       value: 0,
       lx: "",
       href: "",
-      data: {
-        id: 1,
-        name: "道友请留步",
-        introduce:
-          "iOS港澳【免费榜】第一；全球注册用户破【一亿】；全新西游修仙养成卡牌手游《道友请留步》；三界萌宠跨界而来！上古仙魔为你而战，打造你的神话全明星阵容！阿里游戏 “年度最佳卡牌游戏奖”。中国好手游 “年度优秀卡牌手游奖”。游戏狗媒体“最受期待手机游戏奖”。以中国神话为背景，“修仙证道”为主题，融汇了西游记、封神榜、八仙过海等神话巨著，渲染出一幅规模宏大的东方神话世界。 ",
-        firm: "极致游戏",
-        score: "7.2",
-        money: "12.00",
-        pic:
-          "https://static-tapad.tapdb.net/MzQyMTIxM0A1ZGI2YWViZjY0Nzhi.jpg?imageView2/0/w/1080/q/80/format/jpg/interlace/1/ignore-error/1",
-        icon:
-          "https://img.tapimg.com/market/lcs/4f99d394126466b06a2533c2168ddc57_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-      },
-      comment: [
-        {
-          id: 1,
-          userid: 31651,
-          username: "袋装娜条",
-          comment:
-            "主要的目的是来问问怎么这么多不同的人在用相同的目的（加仙盟），很奇怪，而且都要我加微信，这是诈骗的？还是这游戏中你的玩家状况这么好？",
-          score: 3,
-          icon:
-            "https://img.tapimg.com/market/lcs/4f99d394126466b06a2533c2168ddc57_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-        },
-        {
-          id: 2,
-          userid: 31651,
-          username: "袋装娜条",
-          comment:
-            "主要的目的是来问问怎么这么多不同的人在用相同的目的（加仙盟），很奇怪，而且都要我加微信，这是诈骗的？还是这游戏中你的玩家状况这么好？",
-          score: 3,
-          icon:
-            "https://img.tapimg.com/market/lcs/4f99d394126466b06a2533c2168ddc57_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-        },
-        {
-          id: 3,
-          userid: 31651,
-          username: "袋装娜条",
-          comment:
-            "主要的目的是来问问怎么这么多不同的人在用相同的目的（加仙盟），很奇怪，而且都要我加微信，这是诈骗的？还是这游戏中你的玩家状况这么好？",
-          score: 3,
-          icon:
-            "https://img.tapimg.com/market/lcs/4f99d394126466b06a2533c2168ddc57_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-        },
-        {
-          id: 4,
-          userid: 31651,
-          username: "袋装娜条",
-          comment:
-            "主要的目的是来问问怎么这么多不同的人在用相同的目的（加仙盟），很奇怪，而且都要我加微信，这是诈骗的？还是这游戏中你的玩家状况这么好？",
-          score: 3,
-          icon:
-            "https://img.tapimg.com/market/lcs/4f99d394126466b06a2533c2168ddc57_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-        },
-        {
-          id: 5,
-          userid: 31651,
-          username: "袋装娜条",
-          comment:
-            "主要的目的是来问问怎么这么多不同的人在用相同的目的（加仙盟），很奇怪，而且都要我加微信，这是诈骗的？还是这游戏中你的玩家状况这么好？",
-          score: 3,
-          icon:
-            "https://img.tapimg.com/market/lcs/4f99d394126466b06a2533c2168ddc57_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-        },
-        {
-          id: 6,
-          userid: 31651,
-          username: "袋装娜条",
-          comment:
-            "主要的目的是来问问怎么这么多不同的人在用相同的目的（加仙盟），很奇怪，而且都要我加微信，这是诈骗的？还是这游戏中你的玩家状况这么好？",
-          score: 3,
-          icon:
-            "https://img.tapimg.com/market/lcs/4f99d394126466b06a2533c2168ddc57_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1"
-        }
-      ]
+      H: document.documentElement.clientHeight
     };
   },
+  computed: {
+    ...mapState(["mydata", "Ct"])
+  },
   methods: {
-    tuichu() {},
+    ...mapActions(["queryData", "queryCt", "addCt", "isLogin", "addW"]),
+    jianche() {
+      return new Promise(ress => {
+        this.isLogin().then(res => {
+          if (res.code == 1) {
+            Dialog.confirm({
+              title: "通知",
+              message: "您还没得登录，是否前往登录"
+            })
+              .then(() => {
+                location.href = location.origin + `/allpage.html#/Login`;
+              })
+              .catch(() => {});
+          } else if (res.code == 0) {
+            ress(res.code);
+          }
+        });
+      });
+    },
+    //加入心愿单
+    sub() {
+      this.jianche()
+        .then(res => {
+          res;
+          // window.console.log(res);
+          //加入心愿单
+          this.addW({ id: 1, userid: 2 }).then(res => {
+            res;
+            Notify({ type: "success", message: "添加成功" });
+          });
+        })
+        .catch(ret => {
+          ret;
+          // window.console.log(ret);
+        });
+    },
+    //评论
+    comments() {
+      this.jianche().then(res => {
+        res;
+        this.show = !this.show;
+      });
+    },
+    tuichu() {
+      location.href = this.href;
+    },
     frombtn() {
-      window.console.log(this.message, this.value);
+      // window.console.log(this.message, this.value);
+      this.addCt({
+        id: this.lx,
+        userid: 123456,
+        username: "zxz",
+        comment: this.message,
+        score: this.value
+      }).then(res => {
+        // window.console.log(res);
+        if (res.code == 0) {
+          this.show = false;
+          this.queryCt(this.lx);
+        }
+      });
     },
     closed() {
       this.message = "";
       this.value = 0;
     },
     btnTxt() {},
-    sub() {
-      window.console.log(this.lx);
-    },
     Details() {
       this.n = 0;
       this.flag = 1;
@@ -172,17 +177,83 @@ export default {
       this.flag = 2;
     }
   },
+  comments: {
+    objState: null
+  },
   created() {
+    // window.console.log(JSON.parse(localStorage.getItem("objState")));
+    this.objState = JSON.parse(localStorage.getItem("objState"));
+    /* 获取数据 */
     let obj = JSON.parse(localStorage.getItem("obj"));
     this.lx = obj.lx;
     this.href = obj.href;
+    this.queryData(this.lx).then(() => {
+      if (this.mydata == null) {
+        Dialog.alert({
+          message: "哦吼,获取数据失败了"
+        });
+      }
+    });
+    //获取评论
+    this.queryCt(this.lx).then(() => {
+      // window.console.log(this.Ct);
+    });
   }
 };
 </script>
 
 <style scoped lang="less">
+.commentTxt {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 1px 20px 50px #d6cdcd;
+  font-size: 0.3rem;
+  height: 1.4rem;
+  margin: 0.44rem auto;
+  padding: 0.5rem 0.1rem;
+  display: flex;
+  // align-content: space-around;
+  justify-content: space-around;
+  img {
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 10px;
+  }
+  div {
+    width: 4.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-between;
+    p {
+      margin: 0 0;
+    }
+    div {
+      width: 60%;
+    }
+    .ct {
+      margin-top: 0.1rem;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      width: 100%;
+      height: 1.2rem;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+    }
+    .ct::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+.tishi {
+  width: 4.4rem;
+  color: darkcyan;
+  margin: 0.3rem auto;
+  font-size: 0.38rem;
+  font-weight: 600;
+}
 .xiangqing {
-  margin-top: 1.5rem;
+  padding: 1.2rem 0;
 }
 .from {
   width: 80%;
@@ -237,47 +308,12 @@ export default {
   font-size: 0.5rem;
   margin: 0 auto;
 }
-.commentTxt {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 1px 20px 50px #d6cdcd;
-  font-size: 0.3rem;
-  // height: 2.5rem;
-  min-height: 1.8rem;
-  margin: 0.44rem auto;
-  padding: 0.2rem 0.25rem;
-  img {
-    float: left;
-    width: 1.3rem;
-    height: 1.3rem;
-    margin-top: 0.2rem;
-  }
-  .van-rate {
-    float: right;
-  }
-  p {
-    margin-left: 0.2rem;
-    // margin-top: 0.1rem;
-    font-weight: 600;
-    float: left;
-    &:nth-of-type(1) {
-      font-size: 0.35rem;
-    }
-    &:nth-of-type(2) {
-      // margin-top: 0.05rem;
-      font-size: 0.28rem;
-      color: #5f5959;
-      width: 4.3rem;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-      overflow: hidden;
-    }
-  }
-}
 .warp {
   width: 88%;
-  margin: 1.5rem auto;
+  // position: absolute;
+  // top: 0.5rem;
+  padding-top: 1.5rem;
+  margin: 0 auto;
   // float: left;
   // position: relative;
   // top: 0;
@@ -344,12 +380,20 @@ p {
       p {
         width: 50%;
         &:nth-of-type(3) {
+          width: 1.5rem;
+          height: 0.4rem;
+          text-overflow: ellipsis;
+          overflow: hidden;
           padding: 0.03rem 0rem;
         }
       }
       .p1 {
         font-weight: 900;
         font-size: 0.3rem;
+        width: 1.5rem;
+        height: 0.4rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
       .p3 {
         font-weight: 600;
@@ -393,7 +437,8 @@ p {
 }
 .nav {
   width: 100%;
-  top: 0.4rem;
+  padding-top: 0.4rem;
+  z-index: 9999;
   position: fixed;
   display: flex;
   justify-content: space-around;
@@ -410,6 +455,8 @@ p {
   }
 }
 .find {
+  // padding-bottom: 0.5rem;
+  position: relative;
   // min-height: 15rem;
 }
 </style>
