@@ -25,3 +25,10 @@ export function userZhuce(account, password) {
 export function userInfo() {
     return axios.get('/user/userinfo')
 }
+
+
+//修改个人信息
+export function updateInfo(options) {
+    window.console.log(options);
+    return axios.post('/user/update', options)
+}

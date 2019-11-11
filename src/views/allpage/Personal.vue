@@ -5,14 +5,14 @@
       <van-icon name="cluster-o" class="fen" />
       <div class="center">
         <div class="tu">
-          <van-icon name="good-job" class="zan" />&nbsp;
-          <span>0</span>
-          <van-icon name="smile" class="smile" />&nbsp;
-          <span>0</span>
+          <van-icon name="good-job" class="zan" @click="zan1" />&nbsp;
+          <span class="one" v-text="zanNum"></span>
+          <van-icon name="smile" class="smile" @click="smile1" />&nbsp;
+          <span class="two" v-text="smileNum"></span>
         </div>
         <div class="tou">
           <div class="xiang">
-            <img :src='icon'/>
+            <img :src="icon" />
           </div>
           <span class="id">ID:{{userId}}</span>
           <h3 v-text="username"></h3>
@@ -21,27 +21,23 @@
         </div>
         <ul class="ul">
           <li>
-            0
+            1000
             <br />
             <span>粉丝</span>
           </li>
           <li>
-            1
+            100
             <br />
             <span>关注</span>
           </li>
           <li>
-            0
+            200
             <br />
             <span>收藏</span>
           </li>
         </ul>
-        <div class="xiu">修改资料</div>
+        <div class="xiu" @click="xiu">修改资料</div>
         <div class="tui" @click="tui">退出登录</div>
-      </div>
-      <div class="wan">
-        <p>玩过</p>
-        <div class="you"></div>
       </div>
     </div>
     <div class="footerBox">
@@ -65,11 +61,13 @@
 </template>
 
 <script>
-import {userInfo} from "../../api/user.js";
+import { userInfo } from "../../api/user.js";
 export default {
   data() {
     return {
-      icon:'',
+      smileNum: 0,
+      zanNum: 0,
+      icon: "",
       username: "",
       userId: "",
       jianjie: "",
@@ -88,6 +86,10 @@ export default {
     }
   },
   methods: {
+    //修改资料
+    xiu() {
+      location.href = location.origin + "/allpage.html#/Change";
+    },
     //退出登录
     tui() {
       location.href = location.origin;
@@ -100,22 +102,27 @@ export default {
         return;
       }
       this.rate += 20;
+    },
+    zan1() {
+      this.zanNum += 1;
+    },
+    smile1() {
+      this.smileNum += 1;
     }
   },
-  mounted(){
-    userInfo().then(result=>{
+  created() {
+    userInfo().then(result => {
       if (parseInt(result.code) === 0) {
-        let data =  result.data;
-          window.console.log(data);
-          let {name,id,introduce,icon} =data;
-          this.username=name;
-          this.userId = id;
-          this.jianjie = introduce;
-          this.icon=icon;
-          }
-    })
-  },
-
+        let info = result.data;
+        let [{ name, id, introduce, icon }] = info;
+        this.username = name;
+        this.userId = id;
+        this.jianjie = introduce;
+        this.icon = icon;
+        // localStorage.setItem(info);
+      }
+    });
+  }
 };
 </script>
 
@@ -147,12 +154,16 @@ export default {
         position: absolute;
         top: -0.6rem;
         right: 0;
-        width: 25%;
+        width: 29%;
         height: 0.5rem;
         .zan {
           font-size: 0.3rem;
         }
-        span {
+        .one {
+          font-size: 0.3rem;
+          font-weight: 100;
+        }
+        .two {
           font-size: 0.3rem;
           font-weight: 100;
         }
@@ -174,6 +185,11 @@ export default {
           width: 2rem;
           height: 2rem;
           background: pink;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+          }
         }
         .id {
           position: absolute;
@@ -241,22 +257,6 @@ export default {
       }
       .tui {
         margin-left: 0.6rem;
-      }
-    }
-    .wan {
-      width: 100%;
-      height: 2rem;
-      margin-top: 0.4rem;
-      margin-left: 0.4rem;
-      color: #000;
-      font-size: 0.4rem;
-      font-weight: 700;
-      .you {
-        width: 1rem;
-        height: 1rem;
-        background: pink;
-        border-radius: 0.1rem;
-        margin-top: 0.1rem;
       }
     }
   }
