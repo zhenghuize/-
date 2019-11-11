@@ -11,7 +11,7 @@ RESULT：{
 
 ------
 获取当前登录的信息
-URL：/user/userid
+URL：/user/userinfo
 METHOD：GET
 PARAMS：
 RESULT：{
@@ -27,6 +27,7 @@ RESULT：{
         "introduce": "一名程序员",简介
         "icon": "http://127.0.0.1:1574/86.jpg"头像
 }
+
 ----
 检测是否登录
 URL：/user/login

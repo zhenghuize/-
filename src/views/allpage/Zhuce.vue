@@ -2,16 +2,16 @@
   <div class="find">
     <header class="headerBox">
       <van-icon name="cross" class="cha" @click="guan" />
-      <p class="deng">登录TapTap</p>
+      <p class="deng">注册TapTap</p>
     </header>
     <main class="mainBox">
       <van-cell-group>
-        <van-field v-model="username" clearable label="用户名" placeholder="请输入手机号/邮箱账号" />
-        <van-field v-model="password" type="password" label="密码" placeholder="请输入密码" clearable />
+        <van-field v-model="phone" label="手机号：" clearable placeholder="请输入注册手机号" />
+        <van-field v-model="password" type="password" label="密码：" placeholder="请输入密码" clearable />
       </van-cell-group>
-      <van-button type="primary" size="large" @click="submit">登录</van-button>
+      <van-button type="primary" size="large" @click="submit">注册</van-button>
       <br />
-      <a href="javascript:;" @click="zhu">还没账号？去注册 ></a>
+      <a href="javascript:;" @click="guan">已有账号？去登录 ></a>
     </main>
     <footer class="footerBox">
       <span class="one"></span>
@@ -28,53 +28,40 @@
 </template>
 
 <script>
-import { userLogin } from "../../api/user.js";
+import { userZhuce } from "../../api/user.js";
 import md5 from "blueimp-md5";
 export default {
   data() {
     return {
-      username: "",
+      phone: "",
       password: ""
     };
   },
   methods: {
-    zhu() {
-      location.href = location.origin + "/allpage.html#/Zhuce";
-    },
     guan() {
-      location.href = location.origin;
+      location.href = location.origin + "/allpage.html";
     },
     //对用户名进行校验
     checkName() {
-      let ary = [
-        /^1\d{10}$/,
-        /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
-      ];
-      return ary.some(item => {
-        return item.test(this.username);
-      });
+      return /^1\d{10}$/.test(this.phone);
     },
-    //对密码校验
     checkPass() {
-      return /^\d{1,16}$/.test(this.password);
+      return /^\d{1,6}$/.test(this.password);
     },
-    //登录
     submit() {
       if (!this.checkName() || !this.checkPass()) {
-        this.$toast("账号密码错误，请稍后重试！");
+        this.$toast("账号密码格式错误，请输入正确格式！");
         return;
       }
+
       let password = md5(this.password);
-      userLogin(this.username, password)
-        .then(result => {
-          if (parseInt(result.code) === 0) {
-            this.$toast("登录成功！");
-            location.href = location.origin + "/allpage.html#/Personal";
-            return;
-          }
+      userZhuce(this.phone, password)
+        .then(() => {
+          this.$toast("注册成功，即将跳往登录页面！");
+          location.href = location.origin + "/allpage.html";
         })
         .catch(() => {
-          this.$toast("登录失败，请稍后重试!");
+          this.$toast("注册失败，请稍后再试！");
         });
     }
   }
@@ -107,6 +94,11 @@ export default {
     margin-top: 1.5rem;
     margin-bottom: 2.5rem;
     width: 100%;
+    .aa {
+      margin-top: 0 !important;
+      margin-left: 0.2rem !important;
+      margin-bottom: 0 !important;
+    }
     .van-button--primary {
       margin-top: 1rem;
       margin-bottom: 0.5rem;
@@ -117,6 +109,7 @@ export default {
       width: 90%;
       margin-left: 0.4rem;
     }
+
     a {
       font-size: 0.3rem;
       margin-left: 2.3rem;
@@ -180,5 +173,3 @@ export default {
   }
 }
 </style>
-}
-</script>
