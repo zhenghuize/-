@@ -23,3 +23,19 @@ export function recommendedPlayer() {
         return result
     })
 }
+//搜索框-->搜索用户
+export function searchUser(search){
+    return axios.post('/game/searchuser',{
+        search
+    }).then(result=>{
+        return result
+    })
+}
+//搜索框-->搜索游戏
+export function searchGame(search){
+    return axios.post('/game/searchgame',{
+        search
+    }).then(result=>{
+        return result
+    })
+}
