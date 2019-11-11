@@ -1,36 +1,5 @@
 [
     {
-<<<<<<< HEAD
-        "pic":"https://img.tapimg.com/market/lcs/140ec373a8f8f19cd8c2bf456ccdf5da_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1",
-        "name":"Rustle"
-    },
-    {
-        "pic":"https://img.tapimg.com/market/lcs/b12bf53c823eb39f92ff9d6743133d17_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1",
-        "name":"另我空间"
-    },
-    {
-        "pic":"https://img.tapimg.com/market/icons/406328c1638eb89c32ec08def121a917_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1",
-        "name":"Fisher Cat"
-    },
-    {
-        "pic":"https://img.tapimg.com/market/icons/a60f2c06a5c0c246d3c6a59b73d20022_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1",
-        "name":"苍空物语"
-    },
-    {
-        "pic":"https://img.tapimg.com/market/lcs/25cbe511228fa2bbe798142e77ad658c_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1",
-        "name":"放置牧语"
-    },
-    {
-        "pic":"https://img.tapimg.com/market/lcs/53429f9b4efae3aee8591ec3e255b580_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1",
-        "name":"泡沫冬景"
-    },
-    {
-        "pic":"https://img.tapimg.com/market/lcs/2b42f49df7ee86c3425c91d37d2322fc_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1",
-        "name":"仙剑问道"
-    },
-    {
-        "pic":"https://img.tapimg.com/market/lcs/fd87840f7d756b05ce036a901f082a5a_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1",
-=======
         "pic":"http://127.0.0.1:1574/140ec373a8f8f19cd8c2bf456ccdf5da_360.png",
         "name":"Rustle"
     },
@@ -60,7 +29,6 @@
     },
     {
         "pic":"https://img.tapimg.com/market/lcs/90fdfdc79abc6f55d125ced1d5aa2365_360.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1",
->>>>>>> 0d902ce690547bf1a0c30a9fed5bb84991b577f7
         "name":"模拟江湖"
     }
 ]

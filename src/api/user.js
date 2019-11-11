@@ -5,13 +5,7 @@ export function userLogin(account, password) {
     return axios.post('/user/login', {
         account,
         password
-    }).then(result=>{
-        if(parseInt(result.code)===0){
-            
-            return result;
-        }
-        return Promise.reject();
-    })
+    });
 }
 
 //注册
@@ -25,4 +19,9 @@ export function userZhuce(account, password) {
         }
         return Promise.reject(result.codeText);
     });
+}
+
+//获取个人信息
+export function userInfo() {
+    return axios.get('/user/userinfo')
 }

@@ -61,10 +61,6 @@ app.use(async (req, res, next) => {
 // 构建express路由
 app.use('/user', require('./routes/user'));
 app.use('/game', require('./routes/game'));
-<<<<<<< HEAD
-=======
-app.use(express.static('./images'));
->>>>>>> 0d902ce690547bf1a0c30a9fed5bb84991b577f7
 app.use((req, res) => {
     res.status(404);
     res.send('NOT FOUND!');

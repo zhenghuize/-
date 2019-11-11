@@ -5,16 +5,16 @@ import {
 export default {
   namespaced: true,
   state: {
-    info: null
+    // info: null
   },
   mutations: {
-    userInfo(state, payload) {
+   /*  userInfo(state, payload) {
       window.console.log(state,payload)
       state.info = payload;
-    }
+    } */
   },
   actions: {
-    userInfoAction(context) {
+    /* userInfoAction(context) {
       userLogin().then(result => {
         window.console.log(result)
           context.commit('userInfo', result);
@@ -22,6 +22,6 @@ export default {
         }).catch(() => {
         context.commit('userInfo', []);
       })
-    }
+    } */
   }
 };

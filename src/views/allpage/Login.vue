@@ -31,7 +31,6 @@
 import { userLogin } from "../../api/user.js";
 import md5 from "blueimp-md5";
 export default {
-<<<<<<< HEAD
   data() {
     return {
       username: "",
@@ -181,7 +180,5 @@ export default {
   }
 }
 </style>
-=======
 }
 </script>
->>>>>>> 0d902ce690547bf1a0c30a9fed5bb84991b577f7

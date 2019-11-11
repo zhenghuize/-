@@ -11,7 +11,9 @@
           <span>0</span>
         </div>
         <div class="tou">
-          <div class="xiang"></div>
+          <div class="xiang">
+            <img :src='icon'/>
+          </div>
           <span class="id">ID:{{userId}}</span>
           <h3 v-text="username"></h3>
           <span class="biao">礼 仪</span>
@@ -63,9 +65,11 @@
 </template>
 
 <script>
+import {userInfo} from "../../api/user.js";
 export default {
   data() {
     return {
+      icon:'',
       username: "",
       userId: "",
       jianjie: "",
@@ -98,18 +102,20 @@ export default {
       this.rate += 20;
     }
   },
-  mounted() {
-    /* let { id, name, introduce } = this.$store.state.user.info;
-    this.username = name;
-    this.userId = id;
-    this.jianjie = introduce; */
+  mounted(){
+    userInfo().then(result=>{
+      if (parseInt(result.code) === 0) {
+        let data =  result.data;
+          window.console.log(data);
+          let {name,id,introduce,icon} =data;
+          this.username=name;
+          this.userId = id;
+          this.jianjie = introduce;
+          this.icon=icon;
+          }
+    })
   },
-  created() {
-    let info = this.$store.state.user.info;
-    if (info === null) {
-      this.$store.dispatch("user/userInfoAction");
-    }
-  }
+
 };
 </script>
 
