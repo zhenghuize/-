@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     guan() {
-      location.href = location.origin + "/allpage.html";
+      location.href = location.origin;
     },
     //对用户名进行校验
     checkName() {
@@ -58,7 +58,7 @@ export default {
       userZhuce(this.phone, password)
         .then(() => {
           this.$toast("注册成功，即将跳往登录页面！");
-          location.href = location.origin + "/allpage.html";
+      location.href = location.origin + `/allpage.html#/Login`;
         })
         .catch(() => {
           this.$toast("注册失败，请稍后再试！");

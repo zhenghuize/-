@@ -231,7 +231,7 @@ export default {
     jiance().then(result => {
       if (parseInt(result.code) !== 0) {
         this.$toast("未登录，即将跳往登录页");
-        location.href = location.origin + "/allpage.html";
+        location.href = location.origin + "/allpage.html#/Login";
       }
     });
     userInfo()

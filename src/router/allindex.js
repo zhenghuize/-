@@ -1,4 +1,3 @@
-
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Change from '.././views/allpage/Change.vue';
@@ -13,16 +12,19 @@ import Guanggao from '.././views/allpage/Guanggao.vue';
 Vue.use(VueRouter)
 
 const routes = [{
+        path: '/',
+        redirect: '/Guanggao'
+    }, {
         path: '/Change',
         component: Change
-    },{
+    }, {
         path: '/Guanggao',
         component: Guanggao
     },
     {
         path: '/Search',
         component: Search
-    },{
+    }, {
         path: '/SearchList',
         component: SearchList
     },
