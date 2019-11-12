@@ -134,7 +134,6 @@ export default {
     }
   },
   created() {
-<<<<<<< HEAD
     if (JSON.parse(localStorage.getItem("objState")) == null) {
       let obj = {
         flag: 1,
@@ -145,14 +144,6 @@ export default {
         xqbj: "#f8f6fb"
       };
       this.$store.state.obj = obj;
-=======
-    if (JSON.parse(localStorage.getItem("objState")) == null) {  
-      let obj = {
-        flag: 1,
-        AppbjColor: "#f8f6fb",
-        topColor: "rgb(20, 185, 200)"
-      };
->>>>>>> ba4308856c8ee20be5edcdfdfb6652dce0e277df
       localStorage.setItem("objState", JSON.stringify(obj));
     }
     this.objState = JSON.parse(localStorage.getItem("objState"));
