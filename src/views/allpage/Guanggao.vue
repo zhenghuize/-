@@ -47,8 +47,8 @@ export default {
     right: 0.3rem;
     padding: 0.05rem;
     font-size: 0.18rem;
-    color: #000;
-    background: #ffffff;
+    color: white;
+    background:rgba(169,169,169,0.4);
     border-radius: 0.3rem;
   }
 }
