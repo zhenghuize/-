@@ -176,7 +176,6 @@ export default {
               this.value = "";
               wareHouse(this.userId).then(result => {
                 this.wareHouseData = result;
-                window.console.log(result);
               });
             }
             return Promise.reject();
@@ -245,6 +244,7 @@ export default {
           this.jianjie = introduce;
           this.icon = icon;
           localStorage.setItem("id", id);
+          localStorage.setItem("name", name);
           return id;
         }
       })
@@ -257,6 +257,12 @@ export default {
       .then(userid => {
         wareHouse(userid).then(result => {
           this.wareHouseData = result;
+          if (parseInt(result.code) === 0) {
+            this.xinNum = result.data.id;
+            this.xinName = result.data.name;
+            this.xinIcon = result.data.icon;
+            this.xinFen = result.data.score;
+          }
         });
       });
   }

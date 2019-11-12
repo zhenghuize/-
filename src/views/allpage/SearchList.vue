@@ -2,7 +2,7 @@
   <div class="Search">
     <nav>
       <div class="navBox">
-        <van-icon class="icon a" name="arrow-left" color="white" size=".5rem" />
+        <van-icon @click="returns" class="icon a" name="arrow-left" color="white" size=".5rem" />
         <input class="inp" type="text" v-model="value" placeholder="搜索游戏、用户、厂商或帖子" />
         <van-icon class="icon b" name="search" color="white" size=".5rem" />
       </div>
@@ -70,6 +70,9 @@ export default {
     this.allGameList = JSON.parse(localStorage.getItem("searchData"));
   },
   methods: {
+    returns(){
+      this.$router.go(-1)
+    },
     onClick(event) {
       if (event === 1) {
         searchUser(this.value).then(result => {
@@ -111,7 +114,7 @@ export default {
     .navBox {
       position: absolute;
       left: 0.4rem;
-      top: -0.4rem;
+      // top: -0.4rem;
       width: 94%;
       .icon {
         top: 0.1rem;

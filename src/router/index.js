@@ -13,13 +13,13 @@ const routes = [{
   }, {
     path: '/Home',
     component: Home
+  }, {
+    path: '/Personal',
+    component: Personal
   },
   {
     path: '/Find',
     component: Find
-  }, {
-    path: '/Personal',
-    component: Personal
   },
   {
     path: '/Ranking',

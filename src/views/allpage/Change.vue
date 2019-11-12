@@ -22,7 +22,7 @@
       </van-cell-group>
       <van-button type="info" @click="xiu">修改密码</van-button>
     </footer>
-    <van-dialog v-model="show" title="请输入新密码" show-cancel-button @confirm="ti">
+    <van-dialog v-model="show" title="请输入新密码" show-cancel-button @confirm="ti" @cancel='qu'>
       <van-field v-model="password" placeholder="请输入新密码(1~16位数字)" />
     </van-dialog>
   </div>
@@ -49,6 +49,9 @@ export default {
     xiu() {
       this.show = true;
     },
+    qu(){
+this.password='';
+    },
     ti() {
       let reg = /^\d{1,16}$/;
       if(!reg.test(this.password)){
@@ -57,7 +60,6 @@ export default {
         return;
       }
       let pass = md5(this.password);
-      window.console.log(this.id,pass);
       xiuPass(this.id, pass).then(result => {
         if (parseInt(result.code) === 0) {
           this.$toast("密码修改成功，即将跳往登录页！");
@@ -75,7 +77,6 @@ export default {
       };
       updateInfo(obj)
         .then(result => {
-          window.console.log(result);
           if (parseInt(result.code) === 0) {
             this.$toast("修改成功，即将跳往个人首页");
             location.href = location.origin + "/#/Personal";

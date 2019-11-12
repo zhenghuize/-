@@ -8,7 +8,7 @@
       title-active-color="#14b9c8"
     >
       <van-tab title="评分榜">
-        <div class="ListBox" v-for="(item, index) in allGameList" :key="index">
+        <div class="ListBox" v-for="(item, index) in allGameList" :key="index" @click="tiaozhuan(item.id)">
           <span v-html="index+1"></span>
           <div class="imgBox">
             <img :src="item.icon" />
@@ -25,7 +25,7 @@
         </div>
       </van-tab>
       <van-tab title="热玩榜">
-        <div class="ListBox" v-for="(item, index) in allGameList" :key="index">
+        <div class="ListBox" v-for="(item, index) in allGameList" :key="index" @click="tiaozhuan(item.id)">
           <span v-html="index+1"></span>
           <div class="imgBox">
             <img :src="item.icon" />
@@ -42,7 +42,7 @@
         </div>
       </van-tab>
       <van-tab title="热卖榜">
-        <div class="ListBox" v-for="(item, index) in allGameList" :key="index">
+        <div class="ListBox" v-for="(item, index) in allGameList" :key="index" @click="tiaozhuan(item.id)">
           <span v-html="index+1"></span>
           <div class="imgBox">
             <img :src="item.icon" />
@@ -59,7 +59,7 @@
         </div>
       </van-tab>
       <van-tab title="新品榜">
-        <div class="ListBox" v-for="(item, index) in allGameList" :key="index">
+        <div class="ListBox" v-for="(item, index) in allGameList" :key="index" @click="tiaozhuan(item.id)">
           <span v-html="index+1"></span>
           <div class="imgBox">
             <img :src="item.icon" />
@@ -89,6 +89,15 @@ export default {
     };
   },
   methods: {
+    //跳转
+    tiaozhuan(id){
+      let obj = {
+        href: location.href,
+        lx:id
+      };
+      localStorage.setItem("obj", JSON.stringify(obj));
+      location.href = location.origin + `/allpage.html#/Details`;
+    },
     onClick(event) {
       //评分榜
       if (event === 0) {
@@ -133,7 +142,6 @@ export default {
       result.data.sort((a, b) => {
         return b.score - a.score;
       });
-      window.console.log(result.data)
       this.allGameList = result.data;
     });
   }

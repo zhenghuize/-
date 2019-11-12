@@ -6,6 +6,7 @@ import Details from '.././views/allpage/Details.vue';
 import Login from '.././views/allpage/Login.vue';
 import Zhuce from '.././views/allpage/Zhuce.vue';
 import Search from '.././views/allpage/Search.vue';
+import SearchList from '.././views/allpage/SearchList.vue';
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,9 @@ const routes = [{
     {
         path: '/Search',
         component: Search
+    },{
+        path: '/SearchList',
+        component: SearchList
     },
     {
         path: '/Details',

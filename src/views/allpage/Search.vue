@@ -2,7 +2,7 @@
   <div class="Search">
     <nav>
       <div class="navBox">
-        <van-icon class="icon a" name="arrow-left" color="white" size=".5rem" />
+        <van-icon class="icon a" @click="returns" name="arrow-left" color="white" size=".5rem" />
         <input class="inp" type="text" v-model="value" @change="submit" placeholder="搜索游戏、用户、厂商或帖子" />
         <van-icon class="icon b" name="search" color="white" size=".5rem" @change="searchOK" />
       </div>
@@ -69,7 +69,7 @@ export default {
     return {
       //localStorage历史
       lishi: [],
-      hei: "3.7rem",
+      hei: "3.2rem",
       activeNames: ["0"],
       hid: "hidden",
       allBut: true,
@@ -97,11 +97,14 @@ export default {
     this.lishi = arrNew;
   },
   methods: {
+    returns(){
+      this.$router.go(-1)
+    },
     //点击显示全部
     separateAllBut() {
       this.hid = null;
       this.allBut = false;
-      this.hei = "7rem";
+      this.hei = "5.3rem";
       return;
     },
     // 放大镜搜索
@@ -118,7 +121,7 @@ export default {
             localStorage.setItem("searchItem", this.value);
             //跳转页的数据
             localStorage.setItem('searchData',JSON.stringify(result.data));
-            window.location.href="./allpage#/SearchList";
+            this.$router.push({path: 'SearchList'});
           })
           .catch(() => {
             alert("暂无数据");
@@ -193,7 +196,6 @@ export default {
     .navBox {
       position: absolute;
       left: 0.4rem;
-      top: -0.4rem;
       width: 94%;
       .icon {
         top: 0.1rem;
@@ -241,19 +243,22 @@ export default {
   }
   //热门搜索
   .hot {
+    height: 2.4rem;
     padding-left: 0.4rem;
     margin-top: 0.2rem;
     background: white;
     transition: height 0.2s;
     .hotUl {
-      position: relative;
-      top: -0.4rem;
+      // position: relative;
+      // top: -0.2rem;
       .separate {
         padding: 0.2rem 0 0 30vw;
         color: #14b9c8;
         font-size: 0.35rem;
       }
       .hotLi {
+        padding-bottom: .2rem;
+        margin: .1rem 0;
         width: 43vw;
         display: inline-block;
         font-size: 0.38rem;

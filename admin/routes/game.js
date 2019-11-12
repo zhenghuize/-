@@ -9,6 +9,7 @@ const {
 
 // 获取游戏信息
 route.get('/list', (req, res) => {
+
     let data = req.$GAMELIST;
     if (data) {
         success(res, {
@@ -184,6 +185,16 @@ route.post('/addwishlist', (req, res) => {
     let $WISHLIST = req.$WISHLIST,
         $GAMELIST = req.$GAMELIST,
         passDATA = null;
+    let flag = $WISHLIST.some(item => {
+        return parseInt(item.id) === parseInt(req.body.id)
+    })
+    if (flag) {
+        res.send(success(res, {
+            code: 1,
+            codeText: '添加重复'
+        }));
+        return;
+    }
     $GAMELIST.forEach(item => {
         parseInt(item.id) === parseInt(req.body.id) ? passDATA = item : null;
     })

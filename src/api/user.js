@@ -63,13 +63,11 @@ export function wishList(userid) {
 
 //获取仓库数据
 export function wareHouse(userid) {
-    window.console.log(userid);
     return axios.get('/game/warehouse', {
         params: {
             userid
         }
     }).then(result => {
-        window.console.log(result)
         if (parseInt(result.code) === 0) {
             return result.data;
         }
