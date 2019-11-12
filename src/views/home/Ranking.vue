@@ -18,7 +18,7 @@
             <div class="bottom">
               <van-icon name="star" color="#14b9c8" />
               <span class="score" v-html="`&nbsp;`+item.score"></span>
-              <span class="describe">删档测试</span>
+              <!-- <span class="describe">删档测试</span> -->
             </div>
           </div>
           <div class="button">下载</div>
@@ -35,7 +35,7 @@
             <div class="bottom">
               <van-icon name="star" color="#14b9c8" />
               <span class="score" v-html="`&nbsp;`+item.score"></span>
-              <span class="describe">删档测试</span>
+              <!-- <span class="describe">删档测试</span> -->
             </div>
           </div>
           <div class="button">下载</div>
@@ -52,7 +52,7 @@
             <div class="bottom">
               <van-icon name="star" color="#14b9c8" />
               <span class="score" v-html="`&nbsp;`+item.score"></span>
-              <span class="describe">删档测试</span>
+              <!-- <span class="describe">删档测试</span> -->
             </div>
           </div>
           <div class="button">下载</div>
@@ -69,7 +69,7 @@
             <div class="bottom">
               <van-icon name="star" color="#14b9c8" />
               <span class="score" v-html="`&nbsp;`+item.score"></span>
-              <span class="describe">删档测试</span>
+              <!-- <span class="describe">删档测试</span> -->
             </div>
           </div>
           <div class="button">下载</div>
@@ -133,6 +133,7 @@ export default {
       result.data.sort((a, b) => {
         return b.score - a.score;
       });
+      window.console.log(result.data)
       this.allGameList = result.data;
     });
   }

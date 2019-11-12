@@ -27,7 +27,7 @@
           <ul class="newDayUi">
             <li class="newDayLi" v-for="item in everyDay" :key="item.name">
               <a class="newDayImgBox">
-                <img :src="item.pic" alt="item.name" />
+                <img :src="item.pic" alt="" />
               </a>
               <span v-html="item.name"></span>
             </li>
@@ -46,7 +46,7 @@
           <ul class="newDayUi">
             <li class="newDayLi" v-for="item in newGameData" :key="item.name">
               <a class="newDayImgBox">
-                <img :src="item.pic" alt="item.name" />
+                <img :src="item.pic" alt="" />
               </a>
               <span v-html="item.name"></span>
             </li>

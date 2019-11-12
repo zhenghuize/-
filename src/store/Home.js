@@ -6,7 +6,7 @@ export default {
     },
     mutations: {
         mquery(state,dataArr){
-            window.console.log(state,dataArr)
+            // window.console.log(state,dataArr)
             state.data=dataArr
         }
     },
