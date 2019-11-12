@@ -34,7 +34,6 @@ route.post('/login', (req, res) => {
 // 获取当前登录的信息
 route.get('/userinfo', (req, res) => {
     let $USERDATA = req.$USERDATA;
-    console.log(req.session.userid)
     let data = $USERDATA.filter(item => {
         return item.id === req.session.userid;
     })
