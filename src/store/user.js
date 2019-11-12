@@ -9,14 +9,12 @@ export default {
   },
   mutations: {
     userInfo(state, payload) {
-      window.console.log(state,payload)
       state.info = payload;
     }
   },
   actions: {
     userInfoAction(context) {
       userLogin().then(result => {
-        window.console.log(result)
           context.commit('userInfo', result);
           return;
         }).catch(() => {

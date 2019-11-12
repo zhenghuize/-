@@ -7,13 +7,20 @@ export function userLogin(account, password) {
         password
     });
 }
+//修改密码
+export function xiuPass(id,password){
+    return axios.post('/user/resetpassword',{
+        id,
+        password
+    })
+}
 
 //退出登录
-export function out(){
+export function out() {
     return axios.get('/user/signout');
 }
 //检测是否登录
-export function jiance(){
+export function jiance() {
     return axios.get('/user/login');
 }
 //注册
@@ -37,7 +44,6 @@ export function userInfo() {
 
 //修改个人信息
 export function updateInfo(options) {
-    window.console.log(options);
     return axios.post('/user/update', options)
 }
 
@@ -47,15 +53,32 @@ export function wishList(userid) {
         params: {
             userid
         }
+    }).then(result => {
+        if (parseInt(result.code) === 0) {
+            return result.data;
+        }
+        return Promise.reject(result);
     })
 }
 
 //获取仓库数据
 export function wareHouse(userid) {
-    window.console.log(userid);
     return axios.get('/game/warehouse', {
         params: {
             userid
         }
+    }).then(result => {
+        if (parseInt(result.code) === 0) {
+            return result.data;
+        }
+        return Promise.reject(result);
     })
+}
+
+// 添加仓库
+export function addWareHouse(id, userid) {
+    return axios.post('/game/addwarehouse', {
+        id,
+        userid
+    });
 }

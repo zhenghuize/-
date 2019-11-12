@@ -1,7 +1,7 @@
 <template>
-  <div class="find" :style="{backgroundColor:objState.AppbjColor,minHeight:H+'px'}">
+  <div class="find" :style="{backgroundColor:objState.xqbj,minHeight:H+'px'}">
     <!-- 顶部导航 -->
-    <div class="nav" :style="{backgroundColor:objState.AppbjColor}">
+    <div class="nav" :style="{backgroundColor:objState.xqbj}">
       <div @click="tuichu" :style="{color:objState.color}">
         <van-icon name="down" size="0.35rem" class="fanhui" />
       </div>
@@ -153,7 +153,6 @@ export default {
       location.href = this.href;
     },
     frombtn() {
-      // window.console.log(this.message, this.value);
       this.addCt({
         id: this.lx,
         userid: this.id,
@@ -161,7 +160,6 @@ export default {
         comment: this.message,
         score: this.value
       }).then(res => {
-        // window.console.log(res);
         if (res.code == 0) {
           this.show = false;
           this.queryCt(this.lx);
@@ -182,11 +180,10 @@ export default {
       this.flag = 2;
     }
   },
-  comments: {
+  computaed: {
     objState: null
   },
   created() {
-    // window.console.log(JSON.parse(localStorage.getItem("objState")));
     this.objState = JSON.parse(localStorage.getItem("objState"));
     this.id = JSON.parse(localStorage.getItem("id"));
     this.name = localStorage.getItem("name");

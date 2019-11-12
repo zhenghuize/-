@@ -7,12 +7,17 @@ import Login from '.././views/allpage/Login.vue';
 import Zhuce from '.././views/allpage/Zhuce.vue';
 import Search from '.././views/allpage/Search.vue';
 import SearchList from '.././views/allpage/SearchList.vue';
+//Guanggao
+import Guanggao from '.././views/allpage/Guanggao.vue';
 
 Vue.use(VueRouter)
 
 const routes = [{
         path: '/Change',
         component: Change
+    },{
+        path: '/Guanggao',
+        component: Guanggao
     },
     {
         path: '/Search',

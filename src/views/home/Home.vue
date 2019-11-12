@@ -25,7 +25,7 @@
       </div>
       <van-swipe :loop="false" :show-indicators="false" :width="swipeWidth">
         <van-swipe-item v-for="item in anArr" :key="item.id">
-          <div class="item">
+          <div class="item" :style="{color:obj.color,backgroundColor:obj.anbj}">
             <div>
               <p>
                 <img class="xio" :src="item.usericon" alt />
@@ -41,7 +41,7 @@
         </van-swipe-item>
       </van-swipe>
       <!-- 内容 -->
-      <div class="warp" v-for="item in data" :key="item.id" @click="info(item.id)">
+      <div class="warp" v-for="item in data" :key="item.id" @click="info(item.id)" :style="{color:obj.color}">
         <p>来自热门</p>
         <img :src="item.pic" alt />
         <div class="box">
@@ -74,11 +74,15 @@ export default {
     return {
       value: 3,
       swipeWidth: document.documentElement.offsetWidth - 85,
-      isLoading: false
+      isLoading: false,
+      objState:{}
     };
   },
   computed: {
-    ...mapState(["data", "anArr"])
+    ...mapState(["data", "anArr"]),
+    obj:function(){
+      return this.$store.state.obj
+    }
   },
   methods: {
     ...mapActions(["queryData", "queryWt"]),
@@ -100,6 +104,7 @@ export default {
     }
   },
   created() {
+    this.$store.state.obj=JSON.parse(localStorage.getItem("objState"));
     this.queryData().then(() => {
       if (this.data.length == 0) {
         Dialog.alert({
@@ -164,7 +169,7 @@ export default {
     width: 5.5rem;
     height: 2.1rem;
     padding: 0.1rem 0;
-    background: #f8f8f8;
+    background: #cccccc57;
     border-radius: 0.1rem;
     display: flex;
     flex-wrap: wrap;
@@ -216,7 +221,7 @@ export default {
 }
 .anli {
   width: 100%;
-  color: black;
+  color:blueviolet;
   font-size: 0.3rem;
   font-weight: 600;
   display: flex;
@@ -225,7 +230,7 @@ export default {
     margin: 0.1rem 0.1rem;
     &:nth-of-type(2) {
       float: right;
-      color: black;
+      color: rgb(20, 185, 200);
     }
   }
 }
@@ -246,7 +251,7 @@ export default {
   // background: pink;
 }
 .yeka1 {
-  height: 6.9rem;
+  height: 6.0rem;
   border-radius: 4%;
   overflow: hidden;
   margin-top: 0.3rem;

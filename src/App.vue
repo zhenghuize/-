@@ -2,7 +2,7 @@
   <div id="app" :style="{backgroundColor:objState.AppbjColor}">
     <!-- 顶部 -->
     <div class="top" :style="{ backgroundColor: objState.topColor}">
-      <img :src='img' @click="show=!show" alt  class="yuan"/>
+      <img :src="img" @click="show=!show" alt class="yuan" />
 
       <div class="auto">shark top</div>
       <div class="right" @click="shou">
@@ -26,7 +26,7 @@
       position="left"
       :style="{ backgroundColor: objState.topColor,width: '20%',height:'100%' }"
     >
-      <img :src='img' alt class="yuan" />
+      <img :src="img" alt class="yuan" />
       <van-icon name="balance-list-o" />
       <van-icon name="gift-o" />
       <van-icon name="play-circle-o" />
@@ -57,40 +57,38 @@ export default {
         AppbjColor: "#f8f6fb",
         topColor: "rgb(20, 185, 200)"
       },
-      img:'http://127.0.0.1:1574/86.jpg'
+      img: "http://127.0.0.1:1574/86.jpg"
     };
   },
   methods: {
     Logout() {
-      jiance()
-        .then(res => {
-          if (res.code == 0) {
-            Dialog.confirm({
-              title: "通知",
-              message: "确认退出登录吗？"
+      jiance().then(res => {
+        if (res.code == 0) {
+          Dialog.confirm({
+            title: "通知",
+            message: "确认退出登录吗？"
+          })
+            .then(() => {
+              out();
+              // location.href = location.origin + `/allpage.html#/Login`;
+              Notify({ type: "success", message: "已退出" });
+              location.reload(true);
             })
-              .then(() => {
-                out();
-                // location.href = location.origin + `/allpage.html#/Login`;
-                Notify({ type: "success", message: "已退出" });
-                location.reload(true)
-              })
-              .catch(() => {
-                Notify({ type: "primary", message: "已取消" });
-              });
-          }else{
-            Dialog.alert({
+            .catch(() => {
+              Notify({ type: "primary", message: "已取消" });
+            });
+        } else {
+          Dialog.alert({
             message: "您还没有登录"
           });
-          }
-        })
+        }
+      });
     },
     shou() {
       localStorage.setItem("href", location.href);
       location.href = location.origin + `/allpage.html#/Search`;
     },
     router(lx) {
-      // window.console.log(this.$store.state.wayColor);
       this.$router.push({ path: lx, query: { lx: "157" } });
     },
     setState() {
@@ -100,9 +98,11 @@ export default {
       if (i == null) {
         obj = {
           flag: 0,
-          AppbjColor: "#826faf",
+          AppbjColor: "#252733",
           color: "white",
-          topColor: "#826faf"
+          topColor: "#333947",
+          anbj: "#333947",
+          xqbj: "#513669"
         };
         this.ye = require("./assets/ri.png");
       } else {
@@ -110,31 +110,49 @@ export default {
           obj = {
             flag: 1,
             AppbjColor: "#f8f6fb",
-            topColor: "rgb(20, 185, 200)"
+            color: "black",
+            topColor: "rgb(20, 185, 200)",
+            anbj: "#cccccc57",
+            xqbj: "#f8f6fb"
           };
           this.ye = require("./assets/ye.png");
         } else if (JSON.parse(i).flag == 1) {
           obj = {
             flag: 0,
-            AppbjColor: "#826faf",
+            AppbjColor: "#252733",
             color: "white",
-            topColor: "#826faf"
+            topColor: "#333947",
+            anbj: "#333947",
+            xqbj: "#513669"
           };
           this.ye = require("./assets/ri.png");
         }
       }
+      this.$store.state.obj = obj;
       localStorage.setItem("objState", JSON.stringify(obj));
       this.objState = JSON.parse(localStorage.getItem("objState"));
     }
   },
   created() {
+    if (JSON.parse(localStorage.getItem("objState")) == null) {
+      let obj = {
+        flag: 1,
+        AppbjColor: "#f8f6fb",
+        color: "black",
+        topColor: "rgb(20, 185, 200)",
+        anbj: "#cccccc57",
+        xqbj: "#f8f6fb"
+      };
+      this.$store.state.obj = obj;
+      localStorage.setItem("objState", JSON.stringify(obj));
+    }
     this.objState = JSON.parse(localStorage.getItem("objState"));
     jiance();
   }
 };
 </script>
 <style scoped lang="less">
-.yuan{
+.yuan {
   border-radius: 50%;
 }
 .van-popup {
@@ -218,7 +236,7 @@ export default {
 }
 #app {
   // background: #513669;
-  min-height: 610px;
+  // min-height: 610px;
   transition: 1s;
 }
 </style>
