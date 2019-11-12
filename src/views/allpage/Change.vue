@@ -19,17 +19,22 @@
         <van-field v-model="phone" label="手机号：" placeholder="请输入手机号" />
         <van-field v-model="email" label="邮箱：" placeholder="请输入邮箱账号" />
         <van-field v-model="sex" label="性别：" />
-        <van-field v-model="password" type="password" label="修改密码：" placeholder="请输入新密码" />
       </van-cell-group>
+      <van-button type="info" @click="xiu">修改密码</van-button>
     </footer>
+    <van-dialog v-model="show" title="请输入新密码" show-cancel-button @confirm="ti">
+      <van-field v-model="password" placeholder="请输入新密码(1~16位数字)" />
+    </van-dialog>
   </div>
 </template>
 
 <script>
-import { updateInfo, userInfo } from "../../api/user.js";
+import md5 from "blueimp-md5";
+import { updateInfo, userInfo, xiuPass } from "../../api/user.js";
 export default {
   data() {
     return {
+      show: false,
       sex: "男",
       icon: "",
       username: "",
@@ -37,13 +42,32 @@ export default {
       phone: "",
       email: "",
       password: "",
-      id:null,
+      id: null
     };
   },
   methods: {
+    xiu() {
+      this.show = true;
+    },
+    ti() {
+      let reg = /^\d{1,16}$/;
+      if(!reg.test(this.password)){
+        this.$toast("密码格式错误，请输入正确格式！");
+        this.password='';
+        return;
+      }
+      let pass = md5(this.password);
+      window.console.log(this.id,pass);
+      xiuPass(this.id, pass).then(result => {
+        if (parseInt(result.code) === 0) {
+          this.$toast("密码修改成功，即将跳往登录页！");
+          location.href = location.origin + "/allpage.html";
+        }
+      });
+    },
     bao() {
       let obj = {
-        id:this.id,
+        id: this.id,
         username: this.username,
         phone: this.phone,
         email: this.email,
@@ -54,16 +78,16 @@ export default {
           window.console.log(result);
           if (parseInt(result.code) === 0) {
             this.$toast("修改成功，即将跳往个人首页");
-            location.href = location.origin + "/allpage.html#/Personal";
+            location.href = location.origin + "/#/Personal";
           }
         })
         .catch(() => {
-          this.$$toast("修改失败，请稍后再试！");
+          this.$toast("修改失败，请稍后再试！");
         });
     },
 
     tui() {
-      location.href = location.origin + "/allpage.html#/Personal";
+      location.href = location.origin + "/#/Personal";
     }
   },
   created() {
@@ -76,7 +100,7 @@ export default {
         this.icon = icon;
         this.phone = phone;
         this.email = email;
-        this.id=id;
+        this.id = id;
       }
     });
   }
@@ -136,6 +160,10 @@ export default {
   .van-cell {
     box-sizing: border-box;
     padding-top: 0.5rem;
+  }
+  .van-button {
+    width: 100%;
+    margin-top: 0.2rem;
   }
 }
 </style>

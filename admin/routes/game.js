@@ -204,6 +204,16 @@ route.post('/addwarehouse', (req, res) => {
     let $WAREHOUSE = req.$WAREHOUSE,
         $GAMELIST = req.$GAMELIST,
         passDATA = null;
+    let flag = $WAREHOUSE.some(item => {
+        return parseInt(item.id) === parseInt(req.body.id)
+    })
+    if (flag) {
+        res.send(success(res, {
+            code: 1,
+            codeText: '添加重复'
+        }));
+        return;
+    }
     $GAMELIST.forEach(item => {
         parseInt(item.id) === parseInt(req.body.id) ? passDATA = item : null;
     })

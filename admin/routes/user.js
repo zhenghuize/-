@@ -151,7 +151,7 @@ route.post('/resetpassword', (req, res) => {
             flag = true;
             return {
                 ...item,
-                password
+                password:md5Handle(password)
             };
         }
         return item;

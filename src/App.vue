@@ -2,7 +2,10 @@
   <div id="app" :style="{backgroundColor:wayColor.AppColor}">
     <!-- 顶部 -->
     <div class="top" :style="{ backgroundColor: wayColor.topColor}">
-      <img src="https://img.tapimg.com/market/images/22f1196f825298281376608459bfa7fe.png" @click="show=!show" alt />
+      <img
+        src="https://img.tapimg.com/market/images/22f1196f825298281376608459bfa7fe.png"
+        @click="show=!show"
+      />
 
       <div class="auto">shark top</div>
       <div class="right">
@@ -27,7 +30,7 @@ export default {
   data() {
     return {
       active: "",
-      show:false
+      show: false
     };
   },
   computed: {
@@ -47,11 +50,12 @@ export default {
 };
 </script>
 <style scoped  lang="less">
-html,body{
+html,
+body {
   width: 100%;
   overflow: hidden;
 }
-.boxs{
+.boxs {
   margin: 1rem auto;
 }
 .btn {
