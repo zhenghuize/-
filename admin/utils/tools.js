@@ -1,8 +1,8 @@
 // 二次密码加密
 function md5Handle(val) {
-    val = val.substring(4);
+    val = val.slice(4);
     val = val.split('').reverse().join('');
-    val = val.substring(4);
+    val = val.slice(4);
     return val;
 }
 

@@ -2,18 +2,18 @@
   <div class="Search">
     <nav>
       <div class="navBox">
-        <van-icon class="icon a" name="arrow-left" color="white" size=".5rem" />
-        <input class="inp" type="text" placeholder="搜索游戏、用户、厂商或帖子" />
-        <van-icon class="icon b" name="search" color="white" size=".5rem" />
+        <van-icon class="icon a" @click="returns" name="arrow-left" color="white" size=".5rem" />
+        <input class="inp" type="text" v-model="value" @change="submit" placeholder="搜索游戏、用户、厂商或帖子" />
+        <van-icon class="icon b" name="search" color="white" size=".5rem" @change="searchOK" />
       </div>
     </nav>
     <!-- 搜索历史记录 -->
-    <div class="history" v-if="his">
+    <div class="history">
       <ul class="historyUl">
-        <li class="historyLi">
+        <li class="historyLi" v-for="item in lishi" :key="item.id">
           <van-icon class="historyIcon" name="underway-o" />
-          <span>英雄Lia</span>
-          <van-icon class="historyIcon dele" name="cross" @click="his=!his" />
+          <span v-html="item"></span>
+          <van-icon class="historyIcon dele" name="cross" @click="his(item)" />
         </li>
       </ul>
     </div>
@@ -63,11 +63,13 @@
 </template>
 
 <script>
+import { searchGame } from "../../api/findData";
 export default {
   data() {
     return {
-      his: true,
-      hei: "3.7rem",
+      //localStorage历史
+      lishi: [],
+      hei: "3.2rem",
       activeNames: ["0"],
       hid: "hidden",
       allBut: true,
@@ -82,16 +84,96 @@ export default {
         "生存",
         "放置",
         "TapTap独家"
-      ]
+      ],
+      //搜索框内容
+      value: ""
     };
   },
+  created() {
+    let arrNew = JSON.parse(localStorage.getItem("lishiJL"));
+    if (arrNew == null) {
+      arrNew = [];
+    }
+    this.lishi = arrNew;
+  },
   methods: {
+    returns(){
+      this.$router.go(-1)
+    },
     //点击显示全部
     separateAllBut() {
       this.hid = null;
       this.allBut = false;
-      this.hei = "7rem";
+      this.hei = "5.3rem";
       return;
+    },
+    // 放大镜搜索
+    searchOK() {
+      setTimeout(() => {
+        this.his = true;
+        let value = this.value;
+        searchGame(value)
+          .then(result => {
+            this.lishi.push(result.data[0].name);
+            let arr = [...new Set(this.lishi)];
+            localStorage.setItem("lishiJL", JSON.stringify(arr));
+            //存储每一项
+            localStorage.setItem("searchItem", this.value);
+            //跳转页的数据
+            localStorage.setItem('searchData',JSON.stringify(result.data));
+            this.$router.push({path: 'SearchList'});
+          })
+          .catch(() => {
+            alert("暂无数据");
+          });
+      }, 5);
+    },
+    //确认以后  跳转相对页面
+    submit() {
+      setTimeout(() => {
+        this.his = true;
+        let value = this.value;
+        //搜索游戏列表
+        searchGame(value)
+          .then(result => {
+            this.lishi.push(result.data[0].name);
+            let arr = [...new Set(this.lishi)];
+            localStorage.setItem("lishiJL", JSON.stringify(arr));
+            //存储每一项
+            localStorage.setItem("searchItem", this.value);
+            //跳转页的数据
+            localStorage.setItem('searchData',JSON.stringify(result.data));
+            window.location.href="./allpage#/SearchList";
+          })
+          .catch(() => {
+            alert("暂无数据");
+          }); 
+
+          /* //搜索用户列表
+          searchUser(value)
+          .then(result => {
+            this.lishi.push(result.data[0].name);
+            let arr = [...new Set(this.lishi)];
+            localStorage.setItem("lishiJL", JSON.stringify(arr));
+            //搜索栏
+            localStorage.setItem("searchItem", this.value);
+            //跳转页的数据
+            localStorage.setItem('userD',JSON.stringify(result.data));
+            window.location.href="./allpage#/SearchList";
+          })
+          .catch(() => {
+            alert("暂无数据");
+          }); */
+      }, 5);
+      
+    },
+    //删除点击的某一项
+    his(item) {
+      for (let i = 0; i < this.lishi.length; i++) {
+        if (this.lishi[i] === item) {
+          this.lishi.splice(i, 1);
+        }
+      }
     }
   }
 };
@@ -114,7 +196,6 @@ export default {
     .navBox {
       position: absolute;
       left: 0.4rem;
-      top: -0.4rem;
       width: 94%;
       .icon {
         top: 0.1rem;
@@ -149,8 +230,8 @@ export default {
           font-size: 0.3rem;
           padding-right: 0.3rem;
           &.dele {
-            position: relative;
-            right: -4rem;
+            padding-top: 0.3rem;
+            float: right;
           }
         }
         background: white;
@@ -162,19 +243,22 @@ export default {
   }
   //热门搜索
   .hot {
+    height: 2.4rem;
     padding-left: 0.4rem;
     margin-top: 0.2rem;
     background: white;
     transition: height 0.2s;
     .hotUl {
-      position: relative;
-      top: -0.4rem;
+      // position: relative;
+      // top: -0.2rem;
       .separate {
         padding: 0.2rem 0 0 30vw;
         color: #14b9c8;
         font-size: 0.35rem;
       }
       .hotLi {
+        padding-bottom: .2rem;
+        margin: .1rem 0;
         width: 43vw;
         display: inline-block;
         font-size: 0.38rem;

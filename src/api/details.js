@@ -1,11 +1,10 @@
 import axios from './index';
 
 export function addcat({id,userid}){
-    window.console.log(id,userid)
-    // return axios.post('/game/addwishlist',{
-    //     id,
-    //     userid
-    // })
+    return axios.post('/game/addwishlist',{
+        id,
+        userid
+    })
 }
 
 export function login(){
@@ -34,11 +33,6 @@ export function addComment({
     comment,
     score
 }) {
-    window.console.log(id,
-        userid,
-        username,
-        comment,
-        score)
     return axios.post('/game/addcomment', {
         id,
         userid,

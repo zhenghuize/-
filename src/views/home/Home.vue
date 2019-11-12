@@ -91,8 +91,6 @@ export default {
       }, 500);
     },
     info(lx) {
-      //http://localhost:8080/allpage.html#/Details
-      // location.href=location.origin+`/allpage.html#/Details`;
       let obj = {
         href: location.href,
         lx

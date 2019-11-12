@@ -37,7 +37,7 @@
           </li>
         </ul>
         <div class="xiu" @click="xiu">修改资料</div>
-        <div class="tui" @click="tui">退出登录</div>
+        <div class="tui" @click="tui" v-text="haha"></div>
       </div>
     </div>
     <div class="footerBox">
@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import { userInfo, wishList, wareHouse } from "../../api/user.js";
+import { userInfo, wishList, wareHouse, out, jiance } from "../../api/user.js";
 export default {
   data() {
     return {
@@ -124,13 +124,17 @@ export default {
       gradientColor: {
         "0%": "#3fecff",
         "100%": "#6149f6"
-      }
+      },
+      haha: "退出登录"
     };
   },
   computed: {
     text() {
       return this.currentRate.toFixed(0) + "%";
     }
+  },
+  mounted() {
+   
   },
   methods: {
     //修改资料
@@ -139,7 +143,13 @@ export default {
     },
     //退出登录
     tui() {
-      location.href = location.origin;
+      out().then(result => {
+        if (parseInt(result.code) === 0) {
+          this.$toast("退出成功，即将跳往首页！");
+          location.href = location.origin;
+          localStorage.removeItem("id");
+        }
+      });
     },
     //签到
     qian() {
@@ -158,6 +168,14 @@ export default {
     }
   },
   created() {
+    //检测是否登录
+    jiance().then(result => {
+      if (parseInt(result.code) !== 0) {
+        this.$toast("未登录，即将跳往登录页");
+        location.href = location.origin + "/allpage.html";
+      }
+    });
+    
     userInfo()
       .then(result => {
         if (parseInt(result.code) === 0) {
@@ -167,12 +185,14 @@ export default {
           this.userId = id;
           this.jianjie = introduce;
           this.icon = icon;
-          localStorage.setItem('id',id);
+          localStorage.setItem("id", id);
+          localStorage.setItem("name", name);
           return id;
         }
       })
       .then(userid => {
         wishList(userid).then(result => {
+          window.console.log(result)
           if (parseInt(result.code) === 0) {
             this.xinNum = result.data.id;
             this.xinName = result.data.name;
@@ -309,6 +329,18 @@ export default {
       }
       .xiu,
       .tui {
+        display: inline-block;
+        width: 38%;
+        height: 0.8rem;
+        border: 0.01rem solid rgba(0, 176, 191);
+        border-radius: 0.15rem;
+        color: rgba(0, 176, 191);
+        text-align: center;
+        font-size: 0.3rem;
+        line-height: 0.8rem;
+        font-weight: 700;
+      }
+      .deng {
         display: inline-block;
         width: 38%;
         height: 0.8rem;

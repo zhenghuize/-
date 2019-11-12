@@ -2,7 +2,7 @@
   <div id="app" :style="{backgroundColor:objState.AppbjColor}">
     <!-- 顶部 -->
     <div class="top" :style="{ backgroundColor: objState.topColor}">
-      <img src @click="show=!show" alt />
+      <img :src='img' @click="show=!show" alt  class="yuan"/>
 
       <div class="auto">shark top</div>
       <div class="right" @click="shou">
@@ -26,7 +26,7 @@
       position="left"
       :style="{ backgroundColor: objState.topColor,width: '20%',height:'100%' }"
     >
-      <img src alt />
+      <img :src='img' alt class="yuan" />
       <van-icon name="balance-list-o" />
       <van-icon name="gift-o" />
       <van-icon name="play-circle-o" />
@@ -42,8 +42,9 @@
 </template>
 <script>
 // import img from '@./assets/ri.png'
+import { jiance, out } from "./api/user";
 import { Dialog } from "vant";
-import { Notify } from 'vant';
+import { Notify } from "vant";
 export default {
   data() {
     return {
@@ -55,22 +56,34 @@ export default {
         flag: 1,
         AppbjColor: "#f8f6fb",
         topColor: "rgb(20, 185, 200)"
-      }
+      },
+      img:'http://127.0.0.1:1574/86.jpg'
     };
   },
   methods: {
     Logout() {
-      Dialog.confirm({
-        title: "通知",
-        message: "确认退出登录吗？"
-      })
-        .then(() => {
-          // location.href = location.origin + `/allpage.html#/Login`;
-          Notify({ type: "success", message: "已退出" });
+      jiance()
+        .then(res => {
+          if (res.code == 0) {
+            Dialog.confirm({
+              title: "通知",
+              message: "确认退出登录吗？"
+            })
+              .then(() => {
+                out();
+                // location.href = location.origin + `/allpage.html#/Login`;
+                Notify({ type: "success", message: "已退出" });
+                location.reload(true)
+              })
+              .catch(() => {
+                Notify({ type: "primary", message: "已取消" });
+              });
+          }else{
+            Dialog.alert({
+            message: "您还没有登录"
+          });
+          }
         })
-        .catch(() => {
-          Notify({ type: "primary", message: "已取消" });
-        });
     },
     shou() {
       localStorage.setItem("href", location.href);
@@ -116,11 +129,14 @@ export default {
   },
   created() {
     this.objState = JSON.parse(localStorage.getItem("objState"));
-    // window.console.log(this.wayColor);
+    jiance();
   }
 };
 </script>
 <style scoped lang="less">
+.yuan{
+  border-radius: 50%;
+}
 .van-popup {
   transition: 0.5s;
   display: flex;

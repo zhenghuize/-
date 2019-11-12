@@ -27,7 +27,7 @@
           <ul class="newDayUi">
             <li class="newDayLi" v-for="item in everyDay" :key="item.name">
               <a class="newDayImgBox">
-                <img :src="item.pic" alt="item.name" />
+                <img :src="item.pic" alt="" />
               </a>
               <span v-html="item.name"></span>
             </li>
@@ -46,7 +46,7 @@
           <ul class="newDayUi">
             <li class="newDayLi" v-for="item in newGameData" :key="item.name">
               <a class="newDayImgBox">
-                <img :src="item.pic" alt="item.name" />
+                <img :src="item.pic" alt="" />
               </a>
               <span v-html="item.name"></span>
             </li>
@@ -84,7 +84,7 @@
             <div class="recommendedPlayerImgBox">
               <img :src="item.pic" />
             </div>
-            <span class="name" v-html="name"></span>
+            <span class="name"></span>
             <div>
               <img class="icon" :src="item.icon" />
               <span class="role" v-html="item.prove"></span>
@@ -173,18 +173,18 @@ export default {
       current: 0,
       //轮播
       images: [
-        "https://img.tapimg.com/market/images/9e19cb7b0513254a7351fe6f015d156b.png?imageView2/1/w/2080/h/800/q/80/format/jpg/interlace/1/ignore-error/1",
-        "https://img.tapimg.com/market/images/1df2cfc5a78e0faa867b7567060ebde4.jpg?imageView2/1/w/2080/h/800/q/80/format/jpg/interlace/1/ignore-error/1",
-        "https://img.tapimg.com/market/images/ae0c4a98fc7fb67eed64c172bcfeaefe.jpg?imageView2/1/w/2080/h/800/q/80/format/jpg/interlace/1/ignore-error/1"
+        "http://127.0.0.1:1574/9e19cb7b0513254a7351fe6f015d156b.jpg",
+        "http://127.0.0.1:1574/1df2cfc5a78e0faa867b7567060ebde4.jpg",
+        "http://127.0.0.1:1574/ae0c4a98fc7fb67eed64c172bcfeaefe.jpg"
       ],
       //往期专题左右滑动
       oldSpecialImg: [
-        "https://img.tapimg.com/market/images/90d365add61abd510da989171009cd5a.jpg?imageView2/1/w/780/h/300/q/40/format/jpg/interlace/1/ignore-error/1",
-        "https://img.tapimg.com/market/images/975476f65f4b7e85cb4f1a23811d0c01.jpg?imageView2/1/w/780/h/300/q/40/format/jpg/interlace/1/ignore-error/1",
-        "https://img.tapimg.com/market/images/4c0e2f230ba7e87f004a65846896eae8.jpg?imageView2/1/w/780/h/300/q/40/format/jpg/interlace/1/ignore-error/1",
-        "https://img.tapimg.com/market/images/4c0e2f230ba7e87f004a65846896eae8.jpg?imageView2/1/w/780/h/300/q/40/format/jpg/interlace/1/ignore-error/1",
-        "https://img.tapimg.com/market/images/4c0e2f230ba7e87f004a65846896eae8.jpg?imageView2/1/w/780/h/300/q/40/format/jpg/interlace/1/ignore-error/1",
-        "https://img.tapimg.com/market/images/4c0e2f230ba7e87f004a65846896eae8.jpg?imageView2/1/w/780/h/300/q/40/format/jpg/interlace/1/ignore-error/1"
+        "http://127.0.0.1:1574/90d365add61abd510da989171009cd5a.jpg",
+        "http://127.0.0.1:1574/975476f65f4b7e85cb4f1a23811d0c01.jpg",
+        "http://127.0.0.1:1574/4c0e2f230ba7e87f004a65846896eae8.jpg",
+        "http://127.0.0.1:1574/4c0e2f230ba7e87f004a65846896eae8.jpg",
+        "http://127.0.0.1:1574/4c0e2f230ba7e87f004a65846896eae8.jpg",
+        "http://127.0.0.1:1574/4c0e2f230ba7e87f004a65846896eae8.jpg"
       ],
       width: document.documentElement.offsetWidth - 120
     };

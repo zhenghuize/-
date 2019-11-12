@@ -74,8 +74,6 @@
         <div class="frombtn" @click="frombtn">提交</div>
       </van-popup>
     </div>
-
-    <nihao val="dawd"></nihao>
   </div>
 </template>
 
@@ -83,7 +81,6 @@
 import { createNamespacedHelpers } from "vuex";
 const { mapState, mapActions } = createNamespacedHelpers("detailsx");
 import { Dialog } from "vant";
-import { Notify } from "vant";
 export default {
   data() {
     return {
@@ -94,7 +91,9 @@ export default {
       value: 0,
       lx: "",
       href: "",
-      H: document.documentElement.clientHeight
+      H: document.documentElement.clientHeight,
+      id: 0,
+      name: ""
     };
   },
   computed: {
@@ -125,16 +124,22 @@ export default {
       this.jianche()
         .then(res => {
           res;
-          // window.console.log(res);
           //加入心愿单
-          this.addW({ id: 1, userid: 2 }).then(res => {
-            res;
-            Notify({ type: "success", message: "添加成功" });
+          this.addW({ id: this.lx, userid: this.id }).then(res => {
+            if (res.code == 0) {
+              Dialog.confirm({
+                title: "通知",
+                message: "添加成功，是否前往心愿单"
+              })
+                .then(() => {
+                  location.href ="http://localhost:8080/#/Personal?lx=157";
+                })
+                .catch(() => {});
+            }
           });
         })
         .catch(ret => {
           ret;
-          // window.console.log(ret);
         });
     },
     //评论
@@ -151,8 +156,8 @@ export default {
       // window.console.log(this.message, this.value);
       this.addCt({
         id: this.lx,
-        userid: 123456,
-        username: "zxz",
+        userid: this.id,
+        username: this.name,
         comment: this.message,
         score: this.value
       }).then(res => {
@@ -183,6 +188,8 @@ export default {
   created() {
     // window.console.log(JSON.parse(localStorage.getItem("objState")));
     this.objState = JSON.parse(localStorage.getItem("objState"));
+    this.id = JSON.parse(localStorage.getItem("id"));
+    this.name = localStorage.getItem("name");
     /* 获取数据 */
     let obj = JSON.parse(localStorage.getItem("obj"));
     this.lx = obj.lx;
@@ -195,9 +202,7 @@ export default {
       }
     });
     //获取评论
-    this.queryCt(this.lx).then(() => {
-      // window.console.log(this.Ct);
-    });
+    this.queryCt(this.lx);
   }
 };
 </script>
