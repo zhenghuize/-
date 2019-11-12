@@ -7,12 +7,13 @@ export function userLogin(account, password) {
         password
     });
 }
+
 //退出登录
-export function out() {
+export function out(){
     return axios.get('/user/signout');
 }
 //检测是否登录
-export function jiance() {
+export function jiance(){
     return axios.get('/user/login');
 }
 //注册

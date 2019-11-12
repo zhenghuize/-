@@ -70,7 +70,7 @@ export default {
         .then(result => {
           if (parseInt(result.code) === 0) {
             this.$toast("登录成功！");
-            location.href = location.origin + "/allpage.html#/Personal";
+            location.href = location.origin + "/#/Personal";
             return;
           }
         })
@@ -181,4 +181,7 @@ export default {
   }
 }
 </style>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f17f7809249f82b0be76f96af6ce469a1c367274

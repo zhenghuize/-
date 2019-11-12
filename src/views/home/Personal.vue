@@ -133,6 +133,9 @@ export default {
       return this.currentRate.toFixed(0) + "%";
     }
   },
+  mounted() {
+   
+  },
   methods: {
     //修改资料
     xiu() {
@@ -167,11 +170,12 @@ export default {
   created() {
     //检测是否登录
     jiance().then(result => {
-      if (parseInt(result.code) === 0) {
+      if (parseInt(result.code) !== 0) {
         this.$toast("未登录，即将跳往登录页");
         location.href = location.origin + "/allpage.html";
       }
     });
+    
     userInfo()
       .then(result => {
         if (parseInt(result.code) === 0) {
@@ -182,6 +186,7 @@ export default {
           this.jianjie = introduce;
           this.icon = icon;
           localStorage.setItem("id", id);
+          
           return id;
         }
       })
@@ -323,6 +328,18 @@ export default {
       }
       .xiu,
       .tui {
+        display: inline-block;
+        width: 38%;
+        height: 0.8rem;
+        border: 0.01rem solid rgba(0, 176, 191);
+        border-radius: 0.15rem;
+        color: rgba(0, 176, 191);
+        text-align: center;
+        font-size: 0.3rem;
+        line-height: 0.8rem;
+        font-weight: 700;
+      }
+      .deng {
         display: inline-block;
         width: 38%;
         height: 0.8rem;

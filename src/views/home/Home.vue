@@ -4,14 +4,14 @@
       <div class="yeka1">
         <img
           class="img"
-          src="https://img.tapimg.com/market/images/88d6966c346e0393abea432ee7aa26ea.jpg?imageView2/0/w/1080/q/40/format/jpg/interlace/1/ignore-error/1"
+          src="http://127.0.0.1:1574/88d6966c346e0393abea432ee7aa26ea.jpg"
           alt
         />
         <p class="tuijian">编辑推荐</p>
         <div class="xiang">
           <img
             class="tou"
-            src="https://img.tapimg.com/market/lcs/d8169499e83d7fff17b9f514894db175_360.png?imageView2/1/w/180/q/40/interlace/1/ignore-error/1"
+            src="http://127.0.0.1:1574/d8169499e83d7fff17b9f514894db175_360.png"
             alt
           />
           <div>
@@ -86,10 +86,10 @@ export default {
           id: 0,
           p3: "来自热门",
           img2:
-            "https://img.tapimg.com/market/images/f10042350edd841f48b3aebe337d639a.png?imageMogr2/auto-orient/thumbnail/2080x/strip/gravity/Center/crop/2080x828/format/jpg/quality/80/interlace/1",
+            "http://127.0.0.1:1574/f10042350edd841f48b3aebe337d639a.jpg",
           obj: {
             img:
-              "https://img.tapimg.com/market/icons/7930bca7859b8d0a3e0034c23c50b37b_360.png?imageView2/1/w/180/q/40/interlace/1/ignore-error/1",
+              "http://127.0.0.1:1574/7930bca7859b8d0a3e0034c23c50b37b_360.png",
             p1: "贪婪洞窟",
             p2: "4978人评分",
             p3: "全新宠物系统上线",
@@ -101,10 +101,10 @@ export default {
         {
           id: 0,
           tou:
-            "https://img.tapimg.com/market/images/22f1196f825298281376608459bfa7fe.png",
+            "http://127.0.0.1:1574/22f1196f825298281376608459bfa7fe.png",
           name: "你就是医我的药评价江湖悠悠（测试版）",
           src:
-            "https://img.tapimg.com/market/lcs/ab7069f7aa80a3e1bdebcbe0d18bc575_360.png?imageView2/1/w/240/q/80/interlace/1/ignore-error/1",
+            "http://127.0.0.1:1574/ab7069f7aa80a3e1bdebcbe0d18bc575_360.png",
           text:
             "游戏不错，给人一种眼前一亮的感觉，画面，建模各方面都中上吧！但是国风游戏，钢琴bgm什么鬼，一下就把我带出了那种意境，bgm换成萧，笛子，葫芦丝都行啊！你说是不是！好好的一个环境布局亏在bgm上面是不是有点亏！"
         }
@@ -126,8 +126,6 @@ export default {
       }, 500);
     },
     info(lx) {
-      //http://localhost:8080/allpage.html#/Details
-      // location.href=location.origin+`/allpage.html#/Details`;
       let obj = {
         href: location.href,
         lx

@@ -1,3 +1,4 @@
+
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Change from '.././views/allpage/Change.vue';
@@ -5,7 +6,6 @@ import Details from '.././views/allpage/Details.vue';
 import Login from '.././views/allpage/Login.vue';
 import Zhuce from '.././views/allpage/Zhuce.vue';
 import Search from '.././views/allpage/Search.vue';
-import Personal from '.././views/allpage/Personal.vue';
 
 Vue.use(VueRouter)
 
@@ -27,9 +27,6 @@ const routes = [{
     }, {
         path: '/Zhuce',
         component: Zhuce
-    }, {
-        path: '/Personal',
-        component: Personal
     }, {
         path: '*',
         component: Login

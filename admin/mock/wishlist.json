@@ -8,7 +8,7 @@
         "introduce": "手绘世界中的魔性寻物冒险",
         "pic": "http://127.0.0.1:1574/thumb.jpg",
         "icon": "http://127.0.0.1:1574/bdf21e1211195657cf70c49dc0e3ed03_360.png",
-        "userid": "542992"
+        "userid": "123456"
     },
     {
         "id": 7,
@@ -19,6 +19,6 @@
         "introduce": "当2048遇上RPG，合成与打怪的乐趣",
         "pic": "http://127.0.0.1:1574/4a1b91cb3b8719af9138a70c67bc776b.jpg",
         "icon": "http://127.0.0.1:1574/011fb7666b62e3f5b8f9fb37eaf55e91_360.png",
-        "userid": "542992"
+        "userid": "123456"
     }
 ]
