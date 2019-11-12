@@ -40,7 +40,7 @@ RESULT：{
 
 ----
 退出登录
-URL：/user/signout
+URL：'/user/signout'
 METHOD：GET
 PARAMS：null
 RESULT：{

@@ -47,6 +47,7 @@ export default {
     //对用户名进行校验
     checkName() {
       let ary = [
+        /^\d{6}$/,
         /^1\d{10}$/,
         /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
       ];
@@ -180,5 +181,4 @@ export default {
   }
 }
 </style>
-}
-</script>
+
