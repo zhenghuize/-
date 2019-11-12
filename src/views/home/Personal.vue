@@ -100,11 +100,10 @@
 </template>
 
 <script>
-import { userInfo, wishList, wareHouse, out } from "../../api/user.js";
+import { userInfo, wishList, wareHouse, out, jiance } from "../../api/user.js";
 export default {
   data() {
     return {
-      haha: "退出登录",
       xinFen: null,
       xinIcon: "",
       xinNum: null,
@@ -125,7 +124,8 @@ export default {
       gradientColor: {
         "0%": "#3fecff",
         "100%": "#6149f6"
-      }
+      },
+      haha: "退出登录"
     };
   },
   computed: {
@@ -145,9 +145,9 @@ export default {
     tui() {
       out().then(result => {
         if (parseInt(result.code) === 0) {
-          this.$toast("退出成功，即将跳到首页！");
-          localStorage.removeItem("userid");
+          this.$toast("退出成功，即将跳往首页！");
           location.href = location.origin;
+          localStorage.removeItem("id");
         }
       });
     },
@@ -168,15 +168,14 @@ export default {
     }
   },
   created() {
-     let id = localStorage.getItem("userid");
-    parseInt(id) !== null ? (this.haha = "退出登录") : (this.haha = "登录");
     //检测是否登录
-  // jiance().then(result=>{
-  //   if(parseInt(result.code)===0){
-  //     this.haha='登录';
-  //     Location.href=location.origin+'/allpage.html';
-  //   }
-  // })
+    jiance().then(result => {
+      if (parseInt(result.code) !== 0) {
+        this.$toast("未登录，即将跳往登录页");
+        location.href = location.origin + "/allpage.html";
+      }
+    });
+    
     userInfo()
       .then(result => {
         if (parseInt(result.code) === 0) {
@@ -186,8 +185,8 @@ export default {
           this.userId = id;
           this.jianjie = introduce;
           this.icon = icon;
-          localStorage.setItem("userid", id);
-          window.console.log(result);
+          localStorage.setItem("id", id);
+          
           return id;
         }
       })
