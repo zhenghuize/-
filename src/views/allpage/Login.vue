@@ -47,6 +47,7 @@ export default {
     //对用户名进行校验
     checkName() {
       let ary = [
+        /^\d{6}$/,
         /^1\d{10}$/,
         /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
       ];
@@ -69,7 +70,7 @@ export default {
         .then(result => {
           if (parseInt(result.code) === 0) {
             this.$toast("登录成功！");
-            location.href = location.origin + "/allpage.html#/Personal";
+            location.href = location.origin + "/#/Personal";
             return;
           }
         })
@@ -180,5 +181,3 @@ export default {
   }
 }
 </style>
-}
-</script>

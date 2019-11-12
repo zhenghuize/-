@@ -34,18 +34,18 @@ route.post('/login', (req, res) => {
 // 获取当前登录的信息
 route.get('/userinfo', (req, res) => {
     let $USERDATA = req.$USERDATA;
+    console.log(req.session.userid)
     let data = $USERDATA.filter(item => {
         return item.id === req.session.userid;
     })
     delete data[0].password;
-    console.log(data)
-    if(!req.session.id){
-        success(res,{
-            code:1,
-            codeText:'当前用户未登录'
+    if (!req.session.id) {
+        success(res, {
+            code: 1,
+            codeText: '当前用户未登录'
         })
     }
-    success(res,{
+    success(res, {
         data
     });
 })
@@ -102,8 +102,7 @@ route.get('/login', (req, res) => {
 
 // 退出登录
 route.get('/signout', (req, res) => {
-    req.session.phone = null;
-    req.$userid=null
+    req.session.userid = null;
     success(res);
 })
 

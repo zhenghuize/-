@@ -37,7 +37,7 @@
           </li>
         </ul>
         <div class="xiu" @click="xiu">修改资料</div>
-        <div class="tui" @click="tui">退出登录</div>
+        <div class="tui" @click="tui" v-text="haha"></div>
       </div>
     </div>
     <div class="footerBox">
@@ -100,10 +100,11 @@
 </template>
 
 <script>
-import { userInfo, wishList, wareHouse } from "../../api/user.js";
+import { userInfo, wishList, wareHouse, out } from "../../api/user.js";
 export default {
   data() {
     return {
+      haha: "退出登录",
       xinFen: null,
       xinIcon: "",
       xinNum: null,
@@ -132,6 +133,9 @@ export default {
       return this.currentRate.toFixed(0) + "%";
     }
   },
+  mounted() {
+   
+  },
   methods: {
     //修改资料
     xiu() {
@@ -139,7 +143,13 @@ export default {
     },
     //退出登录
     tui() {
-      location.href = location.origin;
+      out().then(result => {
+        if (parseInt(result.code) === 0) {
+          this.$toast("退出成功，即将跳到首页！");
+          localStorage.removeItem("userid");
+          location.href = location.origin;
+        }
+      });
     },
     //签到
     qian() {
@@ -158,6 +168,15 @@ export default {
     }
   },
   created() {
+     let id = localStorage.getItem("userid");
+    parseInt(id) !== null ? (this.haha = "退出登录") : (this.haha = "登录");
+    //检测是否登录
+  // jiance().then(result=>{
+  //   if(parseInt(result.code)===0){
+  //     this.haha='登录';
+  //     Location.href=location.origin+'/allpage.html';
+  //   }
+  // })
     userInfo()
       .then(result => {
         if (parseInt(result.code) === 0) {
@@ -167,7 +186,8 @@ export default {
           this.userId = id;
           this.jianjie = introduce;
           this.icon = icon;
-          localStorage.setItem('id',id);
+          localStorage.setItem("userid", id);
+          window.console.log(result);
           return id;
         }
       })
@@ -309,6 +329,18 @@ export default {
       }
       .xiu,
       .tui {
+        display: inline-block;
+        width: 38%;
+        height: 0.8rem;
+        border: 0.01rem solid rgba(0, 176, 191);
+        border-radius: 0.15rem;
+        color: rgba(0, 176, 191);
+        text-align: center;
+        font-size: 0.3rem;
+        line-height: 0.8rem;
+        font-weight: 700;
+      }
+      .deng {
         display: inline-block;
         width: 38%;
         height: 0.8rem;
