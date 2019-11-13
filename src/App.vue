@@ -4,7 +4,7 @@
     <div class="top" :style="{ backgroundColor: objState.topColor}">
       <img :src="img" @click="show=!show" alt class="yuan" />
 
-      <div class="auto">shark top</div>
+      <div class="auto">TapTap</div>
       <div class="right" @click="shou">
         <van-icon name="search" size="0.6rem" />
       </div>
@@ -198,7 +198,7 @@ export default {
   display: flex;
   justify-content: space-around;
   i {
-    color: #b89dfe;
+    color: #a3a59d;
     line-height: 1rem;
     width: 0.6rem;
   }
@@ -225,7 +225,8 @@ export default {
     font-size: 0.3rem;
     font-weight: 600;
     line-height: 1rem;
-    width: 2rem;
+    width: 100%;
+    text-align: center;
     margin: 0 auto;
   }
   .right {

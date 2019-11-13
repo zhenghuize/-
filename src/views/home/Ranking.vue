@@ -21,7 +21,7 @@
               <!-- <span class="describe">删档测试</span> -->
             </div>
           </div>
-          <div class="button">下载</div>
+          <div class="button">购买</div>
         </div>
       </van-tab>
       <van-tab title="热玩榜">
@@ -38,7 +38,7 @@
               <!-- <span class="describe">删档测试</span> -->
             </div>
           </div>
-          <div class="button">下载</div>
+          <div class="button">购买</div>
         </div>
       </van-tab>
       <van-tab title="热卖榜">
@@ -55,7 +55,7 @@
               <!-- <span class="describe">删档测试</span> -->
             </div>
           </div>
-          <div class="button">下载</div>
+          <div class="button">购买</div>
         </div>
       </van-tab>
       <van-tab title="新品榜">
@@ -72,7 +72,7 @@
               <!-- <span class="describe">删档测试</span> -->
             </div>
           </div>
-          <div class="button">下载</div>
+          <div class="button">购买</div>
         </div>
       </van-tab>
     </van-tabs>

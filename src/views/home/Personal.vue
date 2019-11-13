@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="footerBox">
-      <van-tabs v-model="activeName">
+      <van-tabs v-model="activeName" color="rgb(20, 185, 200)">
         <van-tab title="心愿单" name="a">
           <div class="ListBox" v-for="(item, index) in wishData" :key="index">
             <span v-html="index+1"></span>

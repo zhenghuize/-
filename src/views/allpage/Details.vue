@@ -15,7 +15,9 @@
         @click="Comment"
         :style="{color:objState.color,borderColor:objState.color}"
       >Comment</div>
-      <div :style="{color:objState.color,borderColor:objState.color}">Action</div>
+      <div :style="{color:objState.color,borderColor:objState.color}">
+        <a href="http://localhost:8080/#/Home">TapTap</a>
+      </div>
     </div>
     <!-- 内容 -->
     <div class="xiangqing" v-if="flag==1">
