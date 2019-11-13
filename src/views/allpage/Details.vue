@@ -15,8 +15,8 @@
         @click="Comment"
         :style="{color:objState.color,borderColor:objState.color}"
       >Comment</div>
-      <div :style="{color:objState.color,borderColor:objState.color}">
-        <a href="http://localhost:8080/#/Home">TapTap</a>
+      <div @click="tiao" :style="{color:objState.color,borderColor:objState.color}">
+        TapTap
       </div>
     </div>
     <!-- 内容 -->
@@ -103,6 +103,9 @@ export default {
   },
   methods: {
     ...mapActions(["queryData", "queryCt", "addCt", "isLogin", "addW"]),
+    tiao(){
+      location.href='http://localhost:8080/#/Home';
+    },
     jianche() {
       return new Promise(ress => {
         this.isLogin().then(res => {
