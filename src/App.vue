@@ -102,7 +102,7 @@ export default {
           color: "white",
           topColor: "#333947",
           anbj: "#333947",
-          xqbj: "#513669"
+          xqbj: "rgb(30, 4, 53)"
         };
         this.ye = require("./assets/ri.png");
       } else {
@@ -123,7 +123,7 @@ export default {
             color: "white",
             topColor: "#333947",
             anbj: "#333947",
-            xqbj: "#513669"
+            xqbj: "rgb(30, 4, 53)"
           };
           this.ye = require("./assets/ri.png");
         }

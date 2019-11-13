@@ -45,7 +45,7 @@
     </div>
     <!-- 评论区 -->
     <div class="warp" v-if="flag==2">
-      <div class="ping">-评论区-</div>
+      <div class="ping" :style="{color:objState.color}">-评论区-</div>
       <div v-if="Ct.length==0" class="tishi">还没人评论，快来抢沙发</div>
       <div v-if="Ct.length!==0">
         <div class="commentTxt" v-for="item in Ct" :key="item.key">
@@ -141,6 +141,10 @@ export default {
                 })
                 .catch(() => {});
             }
+            Dialog.alert({
+                title: "通知",
+                message: "请勿重复加入心愿单~~~"
+              })
           });
         })
         .catch(ret => {
@@ -213,7 +217,7 @@ export default {
 .commentTxt {
   background: white;
   border-radius: 8px;
-  box-shadow: 1px 20px 50px #d6cdcd;
+  box-shadow: 1px 8px 45px #978d8d;
   font-size: 0.3rem;
   height: 1.4rem;
   margin: 0.44rem auto;

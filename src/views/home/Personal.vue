@@ -4,7 +4,7 @@
       <!-- <van-icon name="arrow-left" class="left" /> -->
       <van-icon name class />
       <div class="center">
-        <div class="tu">
+        <div class="tu" :style="{color:obj.color}">
           <van-icon name="good-job" class="zan" @click="zan1" />&nbsp;
           <span class="one" v-text="zanNum"></span>
           <van-icon name="smile" class="smile" @click="smile1" />&nbsp;
@@ -154,6 +154,9 @@ export default {
   computed: {
     text() {
       return this.currentRate.toFixed(0) + "%";
+    },
+    obj:function(){
+      return this.$store.state.obj
     }
   },
   methods: {
@@ -288,7 +291,7 @@ export default {
   .headerBox {
     width: 100%;
     height: 3rem;
-    background: rgba(0, 176, 191);
+    // background: rgba(0, 176, 191);
     color: #fff;
     font-size: 0.5rem;
     .left {
@@ -306,7 +309,7 @@ export default {
       border-radius: 0.1rem;
       margin: 0 auto;
       margin-top: 1.5rem;
-      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 12px 25px 5px 0 rgba(255, 245, 245, 0.1);
       .tu {
         position: absolute;
         top: -0.6rem;
@@ -434,7 +437,6 @@ export default {
   }
   .footerBox {
     margin-top: 5rem;
-    background: #eeeeee;
     height: 10rem;
     .van-tabs {
       box-sizing: border-box;
