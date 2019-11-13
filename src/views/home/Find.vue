@@ -1,6 +1,6 @@
 <template>
   <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-    <div class="findBox">
+    <div class="findBox" :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
       <!-- 轮播图 -->
       <van-swipe :autoplay="3000">
         <van-swipe-item v-for="(image, index) in images" :key="index">
@@ -18,12 +18,12 @@
       <!-- 每日新发现 -->
       <div class="newDay slideBox">
         <!-- 头部 -->
-        <div class="newDayTitle slideTitle">
+        <div class="newDayTitle slideTitle"   :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <h4>每日新发现</h4>
           <a href>查看更多</a>
         </div>
         <!-- 主体 -->
-        <div class="newDayCenter">
+        <div class="newDayCenter"   :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <ul class="newDayUi">
             <li class="newDayLi" v-for="item in everyDay" :key="item.name">
               <a class="newDayImgBox">
@@ -37,12 +37,12 @@
       <!-- 新游预约 -->
       <div class="newGame slideBox">
         <!-- 头部 -->
-        <div class="newDayTitle slideTitle">
+        <div class="newDayTitle slideTitle"   :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <h4>新游预定</h4>
           <a href>查看更多</a>
         </div>
         <!-- 主体 -->
-        <div class="newDayCenter">
+        <div class="newDayCenter"   :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <ul class="newDayUi">
             <li class="newDayLi" v-for="item in newGameData" :key="item.name">
               <a class="newDayImgBox">
@@ -56,12 +56,12 @@
       <!-- 往期专题 -->
       <div class="oldSpecial">
         <!-- 头部 -->
-        <div class="oldSpecialTitle slideTitle">
+        <div class="oldSpecialTitle slideTitle"   :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <h4>往期专题</h4>
           <a href>查看更多</a>
         </div>
         <!-- 轮播 -->
-        <van-swipe @change="onChange" :width="width" :loop="false">
+        <van-swipe @change="onChange" :width="width" :loop="false"   :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <van-swipe-item
             class="oldSpecialBanner"
             v-for="(image, index) in oldSpecialImg"
@@ -74,12 +74,12 @@
       <!-- 推荐玩家 -->
       <div class="recommendedPlayer">
         <!-- 头部 -->
-        <div class="recommendedPlayerTitle slideTitle">
+        <div class="recommendedPlayerTitle slideTitle"   :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <h4>推荐玩家</h4>
           <a href>查看更多</a>
         </div>
         <!-- 主体 -->
-        <ul class="recommendedPlayerUl">
+        <ul class="recommendedPlayerUl"   :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <li class="recommendedPlayerLi" v-for="item in recommendedPlayerData" :key="item.name">
             <div class="recommendedPlayerImgBox">
               <img :src="item.pic" />
@@ -100,12 +100,12 @@
       <!-- 游戏测试 -->
       <div class="gameTesting slideBox">
         <!-- 头部 -->
-        <div class="gameTestingTitle slideTitle">
+        <div class="gameTestingTitle slideTitle"   :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <h4>游戏测试</h4>
           <a href>查看更多</a>
         </div>
         <!-- 主体 -->
-        <div class="newDayCenter">
+        <div class="newDayCenter"   :style="{color: obj.color,backgroundColor:obj.AppbjColor}" >
           <ul class="newDayUi">
             <li class="newDayLi" v-for="item in gameTesting" :key="item.name">
               <a class="newDayImgBox">
@@ -222,7 +222,12 @@ export default {
     recommendedPlayer().then(result => {
       this.recommendedPlayerData = result.data;
     });
-  }
+  },
+  computed: {
+    obj:function(){
+      return this.$store.state.obj
+    }
+  },
 };
 </script>
 
@@ -278,7 +283,6 @@ ul::-webkit-scrollbar {
   }
   // 滑动标签
   .listBox {
-    background: #f5f5f5;
     width: 100%;
     height: 0.8rem;
     .bannerList {
@@ -307,7 +311,7 @@ ul::-webkit-scrollbar {
   .slideBox {
     width: 100%;
     height: 3.8rem;
-    background: white;
+    // background: white;
     //主体
     .newDayCenter {
       width: 100%;

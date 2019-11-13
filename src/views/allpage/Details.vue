@@ -1,7 +1,7 @@
 <template>
-  <div class="find" :style="{backgroundColor:objState.AppbjColor,minHeight:H+'px'}">
+  <div class="find" :style="{backgroundColor:objState.xqbj,minHeight:H+'px'}">
     <!-- 顶部导航 -->
-    <div class="nav" :style="{backgroundColor:objState.AppbjColor}">
+    <div class="nav" :style="{backgroundColor:objState.xqbj}">
       <div @click="tuichu" :style="{color:objState.color}">
         <van-icon name="down" size="0.35rem" class="fanhui" />
       </div>
@@ -180,7 +180,7 @@ export default {
       this.flag = 2;
     }
   },
-  comments: {
+  computaed: {
     objState: null
   },
   created() {

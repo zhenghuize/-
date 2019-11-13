@@ -98,9 +98,11 @@ export default {
       if (i == null) {
         obj = {
           flag: 0,
-          AppbjColor: "#826faf",
+          AppbjColor: "#252733",
           color: "white",
-          topColor: "#826faf"
+          topColor: "#333947",
+          anbj: "#333947",
+          xqbj: "#513669"
         };
         this.ye = require("./assets/ri.png");
       } else {
@@ -108,30 +110,40 @@ export default {
           obj = {
             flag: 1,
             AppbjColor: "#f8f6fb",
-            topColor: "rgb(20, 185, 200)"
+            color: "black",
+            topColor: "rgb(20, 185, 200)",
+            anbj: "#cccccc57",
+            xqbj: "#f8f6fb"
           };
           this.ye = require("./assets/ye.png");
         } else if (JSON.parse(i).flag == 1) {
           obj = {
             flag: 0,
-            AppbjColor: "#826faf",
+            AppbjColor: "#252733",
             color: "white",
-            topColor: "#826faf"
+            topColor: "#333947",
+            anbj: "#333947",
+            xqbj: "#513669"
           };
           this.ye = require("./assets/ri.png");
         }
       }
+      this.$store.state.obj = obj;
       localStorage.setItem("objState", JSON.stringify(obj));
       this.objState = JSON.parse(localStorage.getItem("objState"));
     }
   },
   created() {
-    if (JSON.parse(localStorage.getItem("objState")) == null) {  
+    if (JSON.parse(localStorage.getItem("objState")) == null) {
       let obj = {
         flag: 1,
         AppbjColor: "#f8f6fb",
-        topColor: "rgb(20, 185, 200)"
+        color: "black",
+        topColor: "rgb(20, 185, 200)",
+        anbj: "#cccccc57",
+        xqbj: "#f8f6fb"
       };
+      this.$store.state.obj = obj;
       localStorage.setItem("objState", JSON.stringify(obj));
     }
     this.objState = JSON.parse(localStorage.getItem("objState"));
@@ -224,7 +236,7 @@ export default {
 }
 #app {
   // background: #513669;
-  min-height: 610px;
+  // min-height: 610px;
   transition: 1s;
 }
 </style>

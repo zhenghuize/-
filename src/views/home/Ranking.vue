@@ -8,7 +8,7 @@
       title-active-color="#14b9c8"
     >
       <van-tab title="评分榜">
-        <div class="ListBox" v-for="(item, index) in allGameList" :key="index" @click="tiaozhuan(item.id)">
+        <div class="ListBox" v-for="(item, index) in allGameList" :key="index" @click="tiaozhuan(item.id)" :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <span v-html="index+1"></span>
           <div class="imgBox">
             <img :src="item.icon" />
@@ -25,7 +25,7 @@
         </div>
       </van-tab>
       <van-tab title="热玩榜">
-        <div class="ListBox" v-for="(item, index) in allGameList" :key="index" @click="tiaozhuan(item.id)">
+        <div class="ListBox" v-for="(item, index) in allGameList" :key="index" @click="tiaozhuan(item.id)" :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <span v-html="index+1"></span>
           <div class="imgBox">
             <img :src="item.icon" />
@@ -42,7 +42,7 @@
         </div>
       </van-tab>
       <van-tab title="热卖榜">
-        <div class="ListBox" v-for="(item, index) in allGameList" :key="index" @click="tiaozhuan(item.id)">
+        <div class="ListBox" v-for="(item, index) in allGameList" :key="index" @click="tiaozhuan(item.id)" :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <span v-html="index+1"></span>
           <div class="imgBox">
             <img :src="item.icon" />
@@ -59,7 +59,7 @@
         </div>
       </van-tab>
       <van-tab title="新品榜">
-        <div class="ListBox" v-for="(item, index) in allGameList" :key="index" @click="tiaozhuan(item.id)">
+        <div class="ListBox" v-for="(item, index) in allGameList" :key="index" @click="tiaozhuan(item.id)" :style="{color: obj.color,backgroundColor:obj.AppbjColor}">
           <span v-html="index+1"></span>
           <div class="imgBox">
             <img :src="item.icon" />
@@ -144,6 +144,11 @@ export default {
       });
       this.allGameList = result.data;
     });
+  },
+  computed: {
+    obj:function(){
+      return this.$store.state.obj
+    }
   }
 };
 </script>
@@ -158,7 +163,6 @@ export default {
   line-height: 1.6rem;
   background: white;
   overflow: hidden;
-  border-bottom: 0.02rem solid gainsboro;
   .imgBox {
     position: absolute;
     top: 10%;

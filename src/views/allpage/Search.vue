@@ -1,6 +1,6 @@
 <template>
   <div class="Search">
-    <nav>
+    <nav :style="{ backgroundColor: objState.topColor}">
       <div class="navBox">
         <van-icon class="icon a" @click="returns" name="arrow-left" color="white" size=".5rem" />
         <input class="inp" type="text" v-model="value" @change="submit" placeholder="搜索游戏、用户、厂商或帖子" />
@@ -89,7 +89,11 @@ export default {
       value: ""
     };
   },
+  computaed: {
+    objState: null
+  },
   created() {
+    this.objState = JSON.parse(localStorage.getItem("objState"));
     let arrNew = JSON.parse(localStorage.getItem("lishiJL"));
     if (arrNew == null) {
       arrNew = [];

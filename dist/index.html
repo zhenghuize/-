@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=./icon.png><title>taptap</title><link href=/css/chunk-vendors.aa6ea37a.css rel=preload as=style><link href=/css/index.fc65ac2b.css rel=preload as=style><link href=/js/chunk-vendors.73a9ea48.js rel=preload as=script><link href=/js/index.149c3e31.js rel=preload as=script><link href=/css/chunk-vendors.aa6ea37a.css rel=stylesheet><link href=/css/index.fc65ac2b.css rel=stylesheet></head><body><script>;
+    (function (designWidth) {
+      function computeFont() {
+        // 1. 获取视口的宽度
+        let winW = document.documentElement.clientWidth;
+        if (winW >= 750) {
+          //
+          document.documentElement.style.fontSize = '100px';
+          return;
+        }
+        document.documentElement.style.fontSize = winW / designWidth * 100 + 'px';
+      }
+      computeFont();
+      //窗口尺寸改变触发
+      window.addEventListener('resize', computeFont);
+      //移动端朝向改变触发
+      window.addEventListener('orientataionchange', computeFont);
+
+    })(750);</script><div id=app></div><script src=/js/chunk-vendors.73a9ea48.js></script><script src=/js/index.149c3e31.js></script></body></html>
