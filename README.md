@@ -3,8 +3,10 @@
 + 要想启动此项目，就克隆地址，然后👇
 > git clone https://github.com/zhenghuize/taptap.git
 + 打开 admin 文件  启动终端：cmd （不要关闭服务）
-> npm install | yarn install
-> node server
+```javascript
+ npm install | yarn install  //跑环境
+ node server  //起服务
+```
 + 然后返回上一个文件 启动终端
 > npm install | yarn install
 > yarn serve
