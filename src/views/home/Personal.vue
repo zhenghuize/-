@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="flag">
     <div class="headerBox">
       <!-- <van-icon name="arrow-left" class="left" /> -->
       <van-icon name class />
@@ -128,6 +128,7 @@ Vue.use(Notify);
 export default {
   data() {
     return {
+      flag: true,
       value: "",
       showKeyboard: false,
       wishData: null,
@@ -207,6 +208,7 @@ export default {
           this.$toast("退出成功，即将跳往首页！");
           location.href = location.origin;
           localStorage.removeItem("id");
+          localStorage.removeItem("name");
         }
       });
     },
@@ -230,8 +232,12 @@ export default {
     //检测是否登录
     jiance().then(result => {
       if (parseInt(result.code) !== 0) {
-        this.$toast("未登录，即将跳往登录页");
-        location.href = location.origin + "/allpage.html#/Login";
+        this.flag = false;
+        this.$toast("很抱歉，您还未登录，即将跳往登录页！");
+        setTimeout(() => {
+          location.href = location.origin + "/allpage.html#/Login";
+        }, 1000);
+        return;
       }
     });
     userInfo()
