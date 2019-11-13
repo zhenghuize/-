@@ -23,7 +23,7 @@
       <van-button type="info" @click="xiu">修改密码</van-button>
     </footer>
     <van-dialog v-model="show" title="请输入新密码" show-cancel-button @confirm="ti" @cancel='qu'>
-      <van-field v-model="password" placeholder="请输入新密码(1~16位数字)" />
+      <van-field v-model="password" placeholder="请输入要修改的密码" />
     </van-dialog>
   </div>
 </template>
@@ -53,7 +53,7 @@ export default {
 this.password='';
     },
     ti() {
-      let reg = /^\d{1,16}$/;
+      let reg = /^\w{6,16}$/;
       if(!reg.test(this.password)){
         this.$toast("密码格式错误，请输入正确格式！");
         this.password='';

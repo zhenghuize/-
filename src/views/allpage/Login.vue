@@ -57,7 +57,7 @@ export default {
     },
     //对密码校验
     checkPass() {
-      return /^\d{1,16}$/.test(this.password);
+      return /^\w{6,16}$/.test(this.password);
     },
     //登录
     submit() {
